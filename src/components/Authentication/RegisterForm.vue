@@ -172,6 +172,7 @@ const changeToLogin = () => {
 		<div class="form-group">
 			<b-form-input
 				type="email"
+				class="form-input"
 				:class="
 					(email.length === 0 ? 'form-input' : '',
 					(email.length === 0 ? 'form-input' : '',
@@ -318,7 +319,12 @@ span {
 }
 
 .form-input {
+	border: 2px solid $fifth-color;
 	border-radius: 10px;
+
+	&:disabled {
+		background-color: $secondary-color;
+	}
 }
 
 .submit-btn {

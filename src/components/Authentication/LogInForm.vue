@@ -50,6 +50,7 @@ const changeToRegister = () => {
 		<div class="form-group">
 			<b-form-input
 				type="email"
+				class="form-input"
 				:class="
 					(email.length === 0 ? 'form-input' : '',
 					!theme ? 'input-light' : 'input-dark')
@@ -68,6 +69,7 @@ const changeToRegister = () => {
 		<div class="form-group">
 			<b-form-input
 				type="password"
+				class="form-input"
 				:class="
 					(passwordValidation === null ? 'form-input' : '',
 					!theme ? 'input-light' : 'input-dark')

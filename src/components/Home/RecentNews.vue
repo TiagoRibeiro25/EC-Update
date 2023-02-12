@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 import { useNewsStore } from "@/stores/news";
 import Arrow from "@/components/Home/Arrow.vue";
 

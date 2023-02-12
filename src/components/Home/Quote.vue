@@ -1,6 +1,6 @@
 <script setup>
 import { fetchData } from "@/hooks/fetchData";
-import { ref, onBeforeMount, defineProps } from "vue";
+import { ref, onBeforeMount } from "vue";
 
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = props.theme;

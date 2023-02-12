@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
 import Activity from "@/components/Home/Activities/Activity.vue";
 import NoActivities from "@/components/Home/Activities/NoActivities.vue";
 import { useUsersStore } from "@/stores/users";

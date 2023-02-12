@@ -1,6 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
-
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = props.theme;
 </script>

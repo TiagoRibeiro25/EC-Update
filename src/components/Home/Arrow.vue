@@ -1,6 +1,4 @@
 <script setup>
-import { defineProps, defineEmits } from "vue";
-
 const props = defineProps({
 	theme: { type: Boolean, required: true },
 	options: { type: Object, required: true },

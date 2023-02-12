@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import { useNewsStore } from "@/stores/news";
 import { useActivitiesStore } from "@/stores/activities";
 

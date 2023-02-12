@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
 import { useThemesStore } from "@/stores/themes";
 import { convertDateToString } from "@/hooks/convertDate";
 

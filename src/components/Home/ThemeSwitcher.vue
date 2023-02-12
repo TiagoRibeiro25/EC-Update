@@ -1,6 +1,6 @@
 <script setup>
 import { useUsersStore } from "@/stores/users";
-import { ref, watch, defineEmits } from "vue";
+import { ref, watch } from "vue";
 import Switches from "vue-switches";
 
 const theme = ref(useUsersStore().isDarkMode());

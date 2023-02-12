@@ -1,3 +1,10 @@
+<script setup>
+const props = defineProps({
+	question: { type: Object, required: true },
+});
+const question = props.question;
+</script>
+
 <template>
 	<b-card no-body class="mb-1 card">
 		<b-card-header header-tag="header" class="p-1" role="tab">
@@ -16,19 +23,6 @@
 		</b-collapse>
 	</b-card>
 </template>
-
-<script>
-export default {
-	name: "FAQquestion",
-
-	props: {
-		question: {
-			type: Object,
-			required: true,
-		},
-	},
-};
-</script>
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;

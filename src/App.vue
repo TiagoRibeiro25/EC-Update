@@ -132,7 +132,8 @@ $secondary-color: #333333;
 
 .main {
 	flex: 1 1 auto;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	margin-left: 80px;
 	transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 	transform: translateY(10vh);

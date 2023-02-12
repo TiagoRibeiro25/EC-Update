@@ -318,7 +318,6 @@ span {
 }
 
 .form-input {
-	border: 2px solid $fifth-color;
 	border-radius: 10px;
 }
 

@@ -1,5 +1,5 @@
 <script setup>
-import FAQquestion from "@/components/home/FAQ/FAQquestion.vue";
+import FAQquestion from "@/components/Home/FAQ/FAQquestion.vue";
 import { fetchData } from "@/hooks/fetchData";
 import { ref, onBeforeMount, defineProps } from "vue";
 

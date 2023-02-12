@@ -36,7 +36,7 @@ export const useNewsStore = defineStore("news", () => {
 	//* Actions
 	const addNew = (newNew) => {
 		news.value.push({
-			id: news.value.length === 0 ? 1 : news.value.at(-1).id + 1,
+			id: (news.value.length === 0 ? 1 : parseInt(news.value.at(-1).id) + 1).toString(),
 			date: Date.now(),
 			...newNew,
 		});

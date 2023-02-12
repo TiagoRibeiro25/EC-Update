@@ -34,7 +34,10 @@ export const useThemesStore = defineStore("themes", () => {
 		if (themeExists) themeExists.status = "active";
 		else {
 			themes.value.push({
-				id: themes.value.length === 0 ? 1 : themes.value.at(-1).id + 1,
+				id: (themes.value.length === 0
+					? 1
+					: parseInt(themes.value.at(-1).id) + 1
+				).toString(),
 				name: newTheme,
 				status: "active", // active: can be used, inactive: can't be used anymore
 			});

@@ -21,7 +21,9 @@ export const useMeetingsStore = defineStore("meetings", () => {
 
 	//* Actions
 	const addNewMeeting = (newMeeting) => {
-		newMeeting.id = meetings.value.length === 0 ? 1 : meetings.value.at(-1).id + 1;
+		newMeeting.id = (
+			meetings.value.length === 0 ? 1 : parseInt(meetings.value.at(-1).id) + 1
+		).toString();
 		meetings.value.push(newMeeting);
 		setLocalStorage("meetings", meetings.value);
 	};

@@ -44,6 +44,8 @@ export const useUsersStore = defineStore("users", () => {
 
 	const getUserLogged = () => getUserById(loggedUserId.value);
 
+	const doesEmailExist = (email) => users.value.some((user) => user.email === email);
+
 	// Roles
 	const getRoles = () => roles.value;
 
@@ -86,15 +88,12 @@ export const useUsersStore = defineStore("users", () => {
 	};
 
 	const updateHighlightedBadge = (badgeId) => {
-		users.value.find((user) => user.id === this.loggedUserId.value).highlightedBadge =
-			badgeId;
+		users.value.find((user) => user.id === loggedUserId.value).highlightedBadge = badgeId;
 		setLocalStorage("users", users.value);
 	};
 
 	const unlockBadge = (badgeId) => {
-		const userBadges = users.value.find(
-			(user) => user.id === this.loggedUserId.value
-		).badges;
+		const userBadges = users.value.find((user) => user.id === loggedUserId.value).badges;
 		if (userBadges.includes(badgeId)) return;
 		userBadges.push(badgeId);
 		setLocalStorage("users", users.value);
@@ -111,7 +110,7 @@ export const useUsersStore = defineStore("users", () => {
 	};
 
 	const signOut = () => {
-		this.loggedUserId.value = null;
+		loggedUserId.value = null;
 		removeLocalStorage("loggedUser");
 	};
 
@@ -124,7 +123,7 @@ export const useUsersStore = defineStore("users", () => {
 
 		// create the new user
 		users.value.push({
-			id: users.value.length === 0 ? 1 : users.value.at(-1).id + 1,
+			id: (users.value.length === 0 ? 1 : parseInt(users.value.at(-1).id) + 1).toString(),
 			role: "unsigned",
 			badges: [],
 			highlightedBadge: null,
@@ -194,6 +193,7 @@ export const useUsersStore = defineStore("users", () => {
 		getUsers,
 		getUserById,
 		getUsersByRole,
+		doesEmailExist,
 		getUsersBySchool,
 		getRoles,
 		getUserSeeds,

@@ -49,6 +49,7 @@ function close() {
 
 function signOut() {
 	userStore.signOut();
+	window.location.reload();
 }
 </script>
 

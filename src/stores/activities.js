@@ -39,7 +39,10 @@ export const useActivitiesStore = defineStore("activities", () => {
 	//* Actions
 	const addActivity = (newActivity) => {
 		activities.value.push({
-			id: activities.value.length === 0 ? 1 : activities.value.at(-1).id + 1,
+			id: (activities.value.length === 0
+				? 1
+				: parseInt(activities.value.at(-1).id) + 1
+			).toString(),
 			report: {},
 			status: "unfinished",
 			...newActivity,

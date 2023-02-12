@@ -11,7 +11,7 @@ const title = props.title;
 </script>
 
 <template>
-	<header class="mx-5 mt-4 mb-4" :class="{ 'text-light': theme, 'text-dark': !theme }">
+	<header class="mx-5 mt-4 mb-4 px-4" :class="{ 'text-light': theme, 'text-dark': !theme }">
 		<h1 class="title text-left mt-3">{{ title }}</h1>
 		<div
 			class="border border-2 mt-3"

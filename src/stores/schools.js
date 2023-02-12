@@ -24,7 +24,10 @@ export const useSchoolsStore = defineStore("schools", () => {
 
 	const addSchool = (newSchoolName) => {
 		schools.value.push({
-			id: schools.value.length === 0 ? 1 : schools.value.at(-1).id + 1,
+			id: (schools.value.length === 0
+				? 1
+				: parseInt(schools.value.at(-1).id) + 1
+			).toString(),
 			name: newSchoolName,
 		});
 		setLocalStorage("schools", schools.value);

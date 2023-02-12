@@ -1,10 +1,3 @@
-import DashboardView from "@/pages/DashboardView.vue";
-import HomeView from "@/pages/HomeView.vue";
-import AccountView from "@/pages/account/AccountView.vue";
-import AuthenticateView from "@/pages/account/AuthenticateView.vue";
-import ActivitiesView from "@/pages/activities/ActivitiesView.vue";
-import ManageView from "@/pages/manage/ManageView.vue";
-import NewsView from "@/pages/news/NewsView.vue";
 import { useUsersStore } from "@/stores/users.js";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -15,12 +8,12 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "Home",
-			component: HomeView,
+			component: () => import("@/pages/HomeView.vue"),
 		},
 		{
 			path: "/news",
 			name: "News",
-			component: NewsView,
+			component: () => import("@/pages/news/NewsView.vue"),
 		},
 		{
 			path: "/news/:id",
@@ -31,16 +24,28 @@ const router = createRouter({
 			path: "/news/create",
 			name: "NewsCreate",
 			component: () => import("@/pages/news/NewsCreateView.vue"),
+			beforeEnter(to, from, next) {
+				if (useUsersStore().isUserLogged()) {
+					if (useUsersStore().getUserLogged().role === "admin") next();
+					else next({ name: "News" });
+				} else next({ name: "Authenticate" });
+			},
 		},
 		{
 			path: "/activities",
 			name: "Activities",
-			component: ActivitiesView,
+			component: () => import("@/pages/activities/ActivitiesView.vue"),
 		},
 		{
 			path: "/activities/create",
 			name: "ActivitiesCreate",
 			component: () => import("@/pages/activities/ActivitiesCreateView.vue"),
+			beforeEnter(to, from, next) {
+				if (useUsersStore().isUserLogged()) {
+					if (useUsersStore().getUserLogged().role !== "unsigned") next();
+					else next({ name: "Activities" });
+				} else next({ name: "Authenticate" });
+			},
 		},
 		{
 			path: "/activities/:id",
@@ -50,7 +55,7 @@ const router = createRouter({
 		{
 			path: "/dashboard",
 			name: "Dashboard",
-			component: DashboardView,
+			component: () => import("@/pages/DashboardView.vue"),
 			beforeEnter(to, from, next) {
 				if (useUsersStore().isUserLogged()) next();
 				else next({ name: "Authenticate" });
@@ -59,7 +64,7 @@ const router = createRouter({
 		{
 			path: "/manage",
 			name: "Manage",
-			component: ManageView,
+			component: () => import("@/pages/manage/ManageView.vue"),
 			beforeEnter(to, from, next) {
 				if (useUsersStore().isUserLogged()) {
 					if (useUsersStore().getUserLogged().role === "admin") next();
@@ -81,14 +86,14 @@ const router = createRouter({
 		{
 			path: "/account/:id",
 			name: "Account",
-			component: AccountView,
+			component: () => import("@/pages/account/AccountView.vue"),
 		},
 		{
 			path: "/authenticate",
 			name: "Authenticate",
-			component: AuthenticateView,
+			component: () => import("@/pages/account/AuthenticateView.vue"),
 			beforeEnter(to, from, next) {
-				if (useUsersStore().isUserLogged()) next({ name: "Account" });
+				if (useUsersStore().isUserLogged()) next({ name: "Home" });
 				else next();
 			},
 		},

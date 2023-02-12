@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 import Activity from "@/components/Home/Activities/Activity.vue";
+import NoActivities from "@/components/Home/Activities/NoActivities.vue";
 import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({
@@ -19,10 +20,18 @@ if (useUsersStore().isUserLogged()) {
 </script>
 
 <template>
-	<div class="cards" v-for="activity in activities" :key="activity.id">
+	<div
+		v-if="activities.length > 0"
+		class="cards"
+		v-for="activity in activities"
+		:key="activity.id"
+	>
 		<div class="mx-4">
 			<Activity :theme="theme" :activity="activity" />
 		</div>
+	</div>
+	<div v-else>
+		<NoActivities v-if="activities.length === 0" :theme="theme" />
 	</div>
 </template>
 

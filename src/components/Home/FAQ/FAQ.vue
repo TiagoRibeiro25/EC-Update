@@ -57,6 +57,7 @@ $tertiary-color: #ffffff;
 
 .FAQ-bg-light {
 	background-image: url("@/assets/images/illustrationFAQ.png");
+	background-color: $secondary-color;
 }
 
 .FAQ-bg-dark {

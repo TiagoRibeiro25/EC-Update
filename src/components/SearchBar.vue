@@ -54,7 +54,7 @@ watch(search, async () => {
 		<b-input-group>
 			<template #prepend>
 				<b-input-group-text
-					class="searchbar-input"
+					class="searchbar-input search-icon"
 					:class="{ 'bg-light': !theme, 'bg-dark': theme }"
 				>
 					<img src="../assets/icons/search.svg" alt="search" width="20" />
@@ -175,19 +175,13 @@ $tertiary-color: #ffffff;
 	}
 }
 
-@media (max-width: 620px) {
-	.searchbar {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+@media (max-width: 990px) {
+	.search-icon {
+		display: none;
 	}
 
 	.searchbar-input {
 		border-radius: 0;
-	}
-
-	.searchbar-icon {
-		display: none;
 	}
 }
 </style>

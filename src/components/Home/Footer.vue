@@ -1,9 +1,21 @@
 <script setup>
 import { ref } from "vue";
+import { subscribeToNewsLetter } from "@/services/newsLetterService.js";
+import { validateEmail } from "@/hooks/validateEmail.js";
 
 const newsLetterEmail = ref("");
+const btnMessage = ref("Subscrever");
 
-const subscribe = () => console.log(newsLetterEmail.value);
+const subscribe = () => {
+	if (!validateEmail(newsLetterEmail.value)) {
+		btnMessage.value = "Email inválido";
+	} else {
+		btnMessage.value = subscribeToNewsLetter(newsLetterEmail.value) ? "Sucesso" : "Erro";
+	}
+	setTimeout(() => {
+		btnMessage.value = "Subscrever";
+	}, 2000);
+};
 </script>
 
 <template>
@@ -35,8 +47,17 @@ const subscribe = () => console.log(newsLetterEmail.value);
 							v-model="newsLetterEmail"
 							required
 						/>
-						<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
-							Subscrever
+						<button
+							class="btn btn-outline-secondary"
+							:class="{
+								'btn-msg-success': btnMessage === 'Sucesso',
+								'btn-msg-danger': btnMessage === 'Erro',
+								'btn-msg-warning': btnMessage === 'Email inválido',
+							}"
+							type="submit"
+							id="button-addon2"
+						>
+							{{ btnMessage }}
 						</button>
 					</form>
 					<span class="cr-name"> &copy; 2022 Ecoly </span>
@@ -159,6 +180,28 @@ $footer-selected-color: #3fc380;
 	}
 	&:hover {
 		background-color: #3fc380;
+	}
+}
+
+.btn-msg-success {
+	background-color: #3fc380;
+}
+
+.btn-msg-danger {
+	background-color: #f54a4a;
+	color: #333;
+
+	&:hover {
+		background-color: #f54a4a;
+	}
+}
+
+.btn-msg-warning {
+	background-color: #ff9f00;
+	color: #333;
+
+	&:hover {
+		background-color: #ff9f00;
 	}
 }
 

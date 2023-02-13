@@ -237,7 +237,7 @@ const changeToLogin = () => {
 					!theme ? 'input-light' : 'input-dark')
 				"
 				type="number"
-				placeholder="Número Interno (opcional)"
+				placeholder="Número Interno do Aluno (opcional)"
 				v-model="internalNumber"
 				min="0"
 			></b-form-input>

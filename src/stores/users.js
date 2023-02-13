@@ -46,6 +46,8 @@ export const useUsersStore = defineStore("users", () => {
 
 	const doesEmailExist = (email) => users.value.some((user) => user.email === email);
 
+	const doesUserExist = (userId) => users.value.some((user) => user.id === userId);
+
 	// Roles
 	const getRoles = () => roles.value;
 
@@ -194,6 +196,7 @@ export const useUsersStore = defineStore("users", () => {
 		getUserById,
 		getUsersByRole,
 		doesEmailExist,
+		doesUserExist,
 		getUsersBySchool,
 		getRoles,
 		getUserSeeds,

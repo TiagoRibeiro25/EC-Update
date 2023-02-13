@@ -89,6 +89,14 @@ const router = createRouter({
 			path: "/account/:id",
 			name: "Account",
 			component: () => import("@/pages/account/AccountView.vue"),
+			beforeEnter(to, from, next) {
+				const id = to.params.id.toString();
+				// check if the user is logged
+				if (!useUsersStore().isUserLogged() && id === "me") {
+					next({ name: "Authenticate" });
+				}
+				next();
+			},
 		},
 		{
 			path: "/authenticate",

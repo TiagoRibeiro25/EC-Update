@@ -1,7 +1,5 @@
 <script setup>
-const props = defineProps({
-	question: { type: Object, required: true },
-});
+const props = defineProps({ question: { type: Object, required: true } });
 const question = props.question;
 </script>
 

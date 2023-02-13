@@ -1,0 +1,137 @@
+<script setup>
+import { useSchoolsStore } from "@/stores/schools";
+
+const props = defineProps({
+	user: { type: Object, required: true },
+	highLightedBadge: { type: Object, required: true },
+});
+
+const user = props.user;
+const userSchool = useSchoolsStore().getSchoolById(user.schoolId).name;
+const highLightedBadge = props.highLightedBadge;
+
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+</script>
+
+<template>
+	<div class="top-info row mx-auto">
+		<!-- Profile Picture -->
+		<div class="col-lg-2 d-flex justify-content-center align-items-center flex-column">
+			<img
+				class="img-fluid profile-pic rounded-circle"
+				:src="user.photo"
+				alt="Imagem de Perfil"
+			/>
+		</div>
+		<!-- Profile Info -->
+		<div class="col-lg-8 pl-0 pt-0">
+			<h3 class="user-name mb-2 mt-4">
+				{{ user.name }}
+			</h3>
+			<span class="user-info d-block">{{ user.email }}</span>
+			<span class="user-info d-block">
+				{{ capitalize(user.role) }}
+				{{ user.role === "estudante" ? " - " + user.internalId : "" }}
+			</span>
+			<span class="user-info d-block">
+				{{ userSchool }}
+			</span>
+			<div v-if="user.course">
+				<span class="user-info d-block"
+					>{{ user.course }} -
+					{{ user.year ? user.year + " ano" : "" }}
+				</span>
+			</div>
+		</div>
+		<!-- Profile HighLight Badge + Edit Profile Button -->
+		<div class="col-lg-2 d-flex justify-content-center align-items-center flex-column">
+			<!-- HighLight Badge -->
+			<div
+				v-if="highLightedBadge"
+				class="d-flex justify-content-center align-items-center flex-column"
+			>
+				<img
+					class="img-fluid badge-icon mb-2"
+					:src="highLightedBadge.src"
+					alt="Medalha em Destaque"
+				/>
+				<span class="badge-title d-block text-center">{{ highLightedBadge.title }}</span>
+			</div>
+			<div v-else class="d-flex justify-content-center align-items-center flex-column">
+				<img
+					class="empty-badge"
+					src="@/assets/logo/logo.png"
+					alt="Nenhuma medalha em destaque"
+				/>
+			</div>
+			<!-- Edit Profile Button -->
+			<div class="mt-3">
+				<b-button class="edit-profile-btn px-2" size="sm">Editar Perfil</b-button>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style lang="scss" scoped>
+$primary-color: #343e3d;
+$secondary-color: #aedcc0;
+$tertiary-color: #6ea952;
+$quaternary-color: #3fc380;
+
+.top-info {
+	background-color: $primary-color;
+	border-radius: 20px;
+	min-height: 180px;
+	max-width: 1400px;
+}
+
+.profile-pic {
+	max-width: 120px;
+	max-height: 120px;
+	background-color: $tertiary-color;
+}
+
+.user-name,
+.user-info,
+.badge-title {
+	font-family: "Panton", sans-serif;
+	font-size: 1.7rem;
+	font-weight: 700;
+	color: $secondary-color;
+}
+
+.user-info {
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.badge-icon {
+	width: 60px;
+	height: auto;
+}
+
+.badge-title {
+	font-size: 0.8rem;
+}
+
+.empty-badge {
+	width: 65px;
+	height: 90px;
+	background-image: url("@/assets/logo/logo_dark.png");
+}
+
+.edit-profile-btn {
+	background: transparent;
+	border: 1px solid $secondary-color;
+	color: $secondary-color;
+	font-family: "Panton", sans-serif;
+	font-size: 0.9rem;
+	font-weight: 700;
+	border-radius: 20px;
+
+	&:hover {
+		background-color: $secondary-color;
+		color: $primary-color;
+	}
+}
+</style>

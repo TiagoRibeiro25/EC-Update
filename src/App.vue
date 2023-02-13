@@ -9,7 +9,7 @@ import {
 	loadNewsData,
 	loadSchoolsData,
 	loadThemesData,
-} from "@/hooks/loadData";
+} from "@/hooks/loadData.js";
 import SideBar from "@/components/SideBar.vue";
 import { useUsersStore } from "@/stores/users";
 

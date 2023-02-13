@@ -35,7 +35,7 @@ const changeToRegister = () => {
 	quitLogin.value = true;
 	setTimeout(() => {
 		emit("changeToRegister");
-	}, 500);
+	}, 300);
 };
 </script>
 

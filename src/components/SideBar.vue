@@ -188,7 +188,7 @@ function signOut() {
 					v-if="showText"
 					:class="{ 'selected-link': currentRoute === '/account/me' }"
 				>
-					{{ isUserLogged ? "Perfil" : "Sign In" }}
+					{{ isUserLogged ? "Perfil" : "Entrar" }}
 				</span>
 			</router-link>
 			<button

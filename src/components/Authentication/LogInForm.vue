@@ -162,12 +162,23 @@ span {
 	border-color: $fifth-color;
 	color: $primary-color;
 	background-color: $tertiary-color;
+
+	&:focus {
+		background-color: $tertiary-color;
+		border-color: $fifth-color;
+	}
 }
 
 .input-dark {
 	border-color: $fifth-color;
 	color: $tertiary-color;
 	background-color: $primary-color;
+
+	&:focus {
+		background-color: $primary-color;
+		border-color: $fifth-color;
+		color: $secondary-color;
+	}
 }
 
 .btn-light {

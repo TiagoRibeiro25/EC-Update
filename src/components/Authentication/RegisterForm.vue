@@ -126,9 +126,15 @@ const createNewAccount = () => {
 		year: null,
 	};
 
-	if (internalNumber.value !== "") newUser.internalNumber = internalNumber.value;
-	if (course.value !== "") newUser.course = course.value;
-	if (year.value !== "") newUser.year = year.value;
+	if (internalNumber.value !== "") {
+		newUser.internalNumber = internalNumber.value;
+		if (course.value !== "") {
+			newUser.course = course.value;
+			if (year.value !== "") {
+				newUser.year = year.value;
+			}
+		}
+	}
 
 	useUsersStore().createNewUser(newUser);
 	useUsersStore().logIn(email.value, password.value);
@@ -349,12 +355,23 @@ span {
 	border-color: $fifth-color;
 	color: $primary-color;
 	background-color: $tertiary-color;
+
+	&:focus {
+		background-color: $tertiary-color;
+		border-color: $fifth-color;
+	}
 }
 
 .input-dark {
 	border-color: $fifth-color;
 	color: $tertiary-color;
 	background-color: $primary-color;
+
+	&:focus {
+		background-color: $primary-color;
+		border-color: $fifth-color;
+		color: $secondary-color;
+	}
 }
 
 .btn-light {

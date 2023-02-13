@@ -1,3 +1,5 @@
+import HomeView from "@/pages/HomeView.vue";
+import AuthenticateView from "@/pages/account/AuthenticateView.vue";
 import { useUsersStore } from "@/stores/users.js";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -8,7 +10,7 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "Home",
-			component: () => import("@/pages/HomeView.vue"),
+			component: HomeView,
 		},
 		{
 			path: "/news",
@@ -91,7 +93,7 @@ const router = createRouter({
 		{
 			path: "/authenticate",
 			name: "Authenticate",
-			component: () => import("@/pages/account/AuthenticateView.vue"),
+			component: AuthenticateView,
 			beforeEnter(to, from, next) {
 				if (useUsersStore().isUserLogged()) next({ name: "Home" });
 				else next();

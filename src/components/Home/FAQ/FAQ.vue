@@ -77,7 +77,7 @@ $tertiary-color: #ffffff;
 }
 
 .title-text-dark {
-	color: $tertiary-color;
+	color: $secondary-color;
 }
 
 .accordion {

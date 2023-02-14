@@ -84,6 +84,16 @@ export const useUsersStore = defineStore("users", () => {
 	const isDarkMode = () => darkMode.value;
 
 	//* Actions
+	const changeUserInfo = (newEmail, newPassword, newInternalId, newCourse, newYear) => {
+		const user = getUserLogged();
+		user.email = newEmail;
+		user.password = newPassword;
+		user.internalId = newInternalId;
+		user.course = newCourse;
+		user.year = newYear;
+		setLocalStorage("users", users.value);
+	};
+
 	const changeUserRole = (userID, newRole) => {
 		users.value.find((user) => user.id === userID).role = newRole;
 		setLocalStorage("users", users.value);
@@ -216,5 +226,6 @@ export const useUsersStore = defineStore("users", () => {
 		fetchAllData,
 		toggleDarkMode,
 		isDarkMode,
+		changeUserInfo,
 	};
 });

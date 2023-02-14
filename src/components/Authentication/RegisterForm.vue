@@ -220,10 +220,7 @@ const changeToLogin = () => {
 		<div class="form-group">
 			<b-form-select
 				class="form-input"
-				:class="
-					(email.length === 0 ? 'form-input' : '',
-					!theme ? 'input-light' : 'input-dark')
-				"
+				:class="!theme ? 'input-light' : 'input-dark'"
 				v-model="school"
 				:options="schools"
 			></b-form-select>
@@ -232,10 +229,7 @@ const changeToLogin = () => {
 		<div class="form-group">
 			<b-form-input
 				class="form-input"
-				:class="
-					(email.length === 0 ? 'form-input' : '',
-					!theme ? 'input-light' : 'input-dark')
-				"
+				:class="!theme ? 'input-light' : 'input-dark'"
 				type="number"
 				placeholder="Número Interno do Aluno (opcional)"
 				v-model="internalNumber"
@@ -246,10 +240,7 @@ const changeToLogin = () => {
 		<div class="form-group">
 			<b-form-input
 				class="form-input"
-				:class="
-					(email.length === 0 ? 'form-input' : '',
-					!theme ? 'input-light' : 'input-dark')
-				"
+				:class="!theme ? 'input-light' : 'input-dark'"
 				type="text"
 				placeholder="Curso (opcional)"
 				v-model="course"
@@ -260,10 +251,7 @@ const changeToLogin = () => {
 		<div class="form-group">
 			<b-form-input
 				class="form-input"
-				:class="
-					(email.length === 0 ? 'form-input' : '',
-					!theme ? 'input-light' : 'input-dark')
-				"
+				:class="!theme ? 'input-light' : 'input-dark'"
 				type="number"
 				min="0"
 				placeholder="Ano do Curso (opcional)"

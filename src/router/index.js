@@ -103,7 +103,8 @@ const router = createRouter({
 			name: "Authenticate",
 			component: AuthenticateView,
 			beforeEnter(to, from, next) {
-				if (useUsersStore().isUserLogged()) next({ name: "Home" });
+				if (useUsersStore().isUserLogged())
+					next({ name: "Account", params: { id: "me" } });
 				else next();
 			},
 		},

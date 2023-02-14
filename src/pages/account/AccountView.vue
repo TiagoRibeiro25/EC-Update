@@ -10,8 +10,11 @@ const theme = useUsersStore().isDarkMode();
 const isLoaded = ref(false);
 
 const id = route.params.id === "me" ? useUsersStore().getUserLogged().id : route.params.id;
+
 const user = ref(useUsersStore().getUserById(id));
-const highLightedBadge = ref(useBadgesStore().getBadgeById(user.value.highlightedBadge));
+const highLightedBadge = ref(
+	user.value ? useBadgesStore().getBadgeById(user.value.highlightedBadge) : null
+);
 
 // Validate the user id
 onBeforeMount(() => {
@@ -38,7 +41,7 @@ onBeforeMount(() => {
 		class="wrapper px-xl-5 px-4 pt-3"
 		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
-		<div v-if="isLoaded" class="px-5 mt-5">
+		<div v-if="isLoaded" class="px-sm-5 mt-5">
 			<Info :user="user" :highLightedBadge="highLightedBadge" />
 		</div>
 		<div

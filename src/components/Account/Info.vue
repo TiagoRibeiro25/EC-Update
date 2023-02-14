@@ -1,6 +1,7 @@
 <script setup>
 import { useSchoolsStore } from "@/stores/schools";
 import { useUsersStore } from "@/stores/users";
+import EditProfileModal from "@/components/Account/EditProfileModal.vue";
 
 const props = defineProps({
 	user: { type: Object, required: true },
@@ -36,7 +37,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 			</h3>
 			<span class="user-info d-block">{{ user.email }}</span>
 			<span class="user-info d-block">
-				{{ capitalize(user.role) }}
+				{{ user.role === "unsigned" ? "Sem cargo" : capitalize(user.role) }}
 				{{ user.role === "estudante" ? " - " + user.internalId : "" }}
 			</span>
 			<span class="user-info d-block">
@@ -44,8 +45,8 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 			</span>
 			<div v-if="user.course">
 				<span class="user-info d-block"
-					>{{ user.course }} -
-					{{ user.year ? user.year + " ano" : "" }}
+					>{{ user.course }}
+					{{ user.year ? `- ${user.year} ano` : "" }}
 				</span>
 			</div>
 		</div>
@@ -73,10 +74,19 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 			</div>
 			<!-- Edit Profile Button -->
 			<div v-if="isThisUserPage" class="mt-3">
-				<b-button class="edit-profile-btn px-2" size="sm">Editar Perfil</b-button>
+				<b-button
+					class="edit-profile-btn px-2"
+					size="sm"
+					@click="$bvModal.show('edit-profile-modal')"
+				>
+					Editar Perfil
+				</b-button>
 			</div>
 		</div>
 	</div>
+
+	<!-- Edit Profile Modal -->
+	<EditProfileModal v-if="isThisUserPage" id="edit-profile-modal" />
 </template>
 
 <style lang="scss" scoped>

@@ -20,7 +20,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 </script>
 
 <template>
-	<div class="top-info row mx-auto py-lg-0 py-sm-3 py-5">
+	<div class="top-info row mx-auto py-lg-0 py-sm-3 py-5 shadow">
 		<!-- Profile Picture -->
 		<div class="col-lg-2 d-flex justify-content-center align-items-center flex-column">
 			<img

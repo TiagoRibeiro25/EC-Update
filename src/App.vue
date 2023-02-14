@@ -20,34 +20,34 @@ const showContent = ref(false);
 const theme = ref(useUsersStore().isDarkMode());
 
 onBeforeMount(async () => {
-	loadingMessage.value = "Carregando Utilizadores...";
+	loadingMessage.value = "Plantando árvores...";
 	await loadAllUserData();
 	loadingPercentage.value = ((100 / 7) * 1).toFixed(0);
 
-	loadingMessage.value = "Carregando Conquistas...";
+	loadingMessage.value = "Preservando os oceanos...";
 	await loadBadgesData();
 	loadingPercentage.value = ((100 / 7) * 2).toFixed(0);
 
-	loadingMessage.value = "Carregando Atividades...";
+	loadingMessage.value = "Fortalecendo a luta pela natureza...";
 	await loadActivitiesData();
 	loadingPercentage.value = ((100 / 7) * 3).toFixed(0);
 
-	loadingMessage.value = "Carregando Reuniões...";
+	loadingMessage.value = "Investindo em energias limpas...";
 	await loadMeetingsData();
 	loadingPercentage.value = ((100 / 7) * 4).toFixed(0);
 
-	loadingMessage.value = "Carregando Notícias...";
+	loadingMessage.value = "Eliminando fontes de poluição...";
 	await loadNewsData();
 	loadingPercentage.value = ((100 / 7) * 5).toFixed(0);
 
-	loadingMessage.value = "Carregando Escolas...";
+	loadingMessage.value = "Colaborando para um futuro mais limpo...";
 	await loadSchoolsData();
 	loadingPercentage.value = ((100 / 7) * 6).toFixed(0);
 
-	loadingMessage.value = "Carregando Temas...";
+	loadingMessage.value = "Investindo em soluções verdes...";
 	await loadThemesData();
 	loadingPercentage.value = ((100 / 7) * 7).toFixed(0);
-	loadingMessage.value = "Carregamento Concluído!";
+	loadingMessage.value = "Ecoly - Plante o seu futuro!";
 
 	// Prevent scrolling while loading
 	document.body.style.overflow = "hidden";

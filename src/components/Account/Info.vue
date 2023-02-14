@@ -68,6 +68,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 					class="empty-badge"
 					src="@/assets/logo/logo.png"
 					alt="Nenhuma medalha em destaque"
+					:class="{ 'mb-3': !isThisUserPage }"
 				/>
 			</div>
 			<!-- Edit Profile Button -->

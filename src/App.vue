@@ -47,7 +47,7 @@ onBeforeMount(async () => {
 	loadingMessage.value = "Investindo em soluções verdes...";
 	await loadThemesData();
 	loadingPercentage.value = ((100 / 7) * 7).toFixed(0);
-	loadingMessage.value = "Ecoly - Plante o seu futuro!";
+	loadingMessage.value = "Bem-vindo(a) ao Ecoly!";
 
 	// Prevent scrolling while loading
 	document.body.style.overflow = "hidden";

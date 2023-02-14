@@ -1,5 +1,6 @@
 <script setup>
 import { useSchoolsStore } from "@/stores/schools";
+import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({
 	user: { type: Object, required: true },
@@ -9,6 +10,11 @@ const props = defineProps({
 const user = props.user;
 const userSchool = useSchoolsStore().getSchoolById(user.schoolId).name;
 const highLightedBadge = props.highLightedBadge;
+let isThisUserPage = false;
+
+if (useUsersStore().isUserLogged() && user.id === useUsersStore().getUserLogged().id) {
+	isThisUserPage = true;
+}
 
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 </script>
@@ -65,7 +71,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 				/>
 			</div>
 			<!-- Edit Profile Button -->
-			<div class="mt-3">
+			<div v-if="isThisUserPage" class="mt-3">
 				<b-button class="edit-profile-btn px-2" size="sm">Editar Perfil</b-button>
 			</div>
 		</div>

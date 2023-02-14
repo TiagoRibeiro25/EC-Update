@@ -301,6 +301,7 @@ $secondary-color: #e4f0e8;
 $tertiary-color: #ffffff;
 $fourth-color: #18516f;
 $fifth-color: #aedcc0;
+$sixth-color: #272e2d;
 
 .form {
 	animation: slide-from-right 0.5s ease-in-out forwards;
@@ -327,10 +328,6 @@ span {
 .form-input {
 	border: 2px solid $fifth-color;
 	border-radius: 10px;
-
-	&:disabled {
-		background-color: $secondary-color;
-	}
 }
 
 .submit-btn {
@@ -360,6 +357,10 @@ span {
 		background-color: $tertiary-color;
 		border-color: $fifth-color;
 	}
+
+	&:disabled {
+		background-color: $secondary-color;
+	}
 }
 
 .input-dark {
@@ -370,6 +371,11 @@ span {
 	&:focus {
 		background-color: $primary-color;
 		border-color: $fifth-color;
+		color: $secondary-color;
+	}
+
+	&:disabled {
+		background-color: $sixth-color;
 		color: $secondary-color;
 	}
 }

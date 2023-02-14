@@ -20,7 +20,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 </script>
 
 <template>
-	<div class="top-info row mx-auto">
+	<div class="top-info row mx-auto py-lg-0 py-sm-3 py-5">
 		<!-- Profile Picture -->
 		<div class="col-lg-2 d-flex justify-content-center align-items-center flex-column">
 			<img
@@ -30,7 +30,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 			/>
 		</div>
 		<!-- Profile Info -->
-		<div class="col-lg-8 pl-0 pt-0">
+		<div class="col-lg-8 pl-lg-0 pb-lg-0 pb-3 text-lg-left text-center">
 			<h3 class="user-name mb-2 mt-4">
 				{{ user.name }}
 			</h3>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, defineEmits, defineProps } from "vue";
+import { ref, computed } from "vue";
 import { useUsersStore } from "@/stores/users";
 import { useSchoolsStore } from "@/stores/schools";
 import { validateEmail } from "@/hooks/validateEmail";

@@ -9,7 +9,10 @@ const title = props.title;
 </script>
 
 <template>
-	<header class="mx-5 mt-4 mb-4 px-4" :class="{ 'text-light': theme, 'text-dark': !theme }">
+	<header
+		class="mt-4 mb-4 px-5 mx-auto"
+		:class="{ 'text-light': theme, 'text-dark': !theme }"
+	>
 		<h1 class="title text-left mt-3">{{ title }}</h1>
 		<div
 			class="border border-2 mt-3"
@@ -22,10 +25,15 @@ const title = props.title;
 $primary-color: #000000;
 $secondary-color: #aedcc0;
 
+header {
+	max-width: 1400px;
+}
+
 .title {
 	font-family: "Alkes", sans-serif;
 	font-weight: bold;
 	font-size: 35px;
+	text-transform: uppercase;
 }
 
 .text-light {

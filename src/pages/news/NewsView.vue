@@ -1,16 +1,37 @@
 <script setup>
 import Header from "@/components/Header.vue";
+import SearchBar from "../../components/SearchBar.vue";
+import CreateNewBtn from "@/components/News/CreateNewBtn.vue";
 import { useUsersStore } from "@/stores/users";
 
 const theme = useUsersStore().isDarkMode();
+const isUserLogged = useUsersStore().isUserLogged();
+const isUserAdmin = useUsersStore().getUserLogged().role === "admin";
 </script>
 
 <template>
 	<div
-		class="wrapper px-xl-5 px-4 pt-3"
+		class="wrapper pt-3"
 		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
-		<Header title="NOTÍCIAS" :theme="theme" />
+		<div class="row">
+			<div class="col-9 d-flex align-items-center mt-4 pt-2">
+				<SearchBar :theme="theme" page="News" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<Header title="NOTÍCIAS" :theme="theme" />
+			</div>
+		</div>
+		<div
+			class="row content mx-auto px-5 mt-4"
+			:class="{ 'd-none': !isUserLogged || !isUserAdmin }"
+		>
+			<div class="col-12 px-0">
+				<CreateNewBtn :theme="theme" />
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -24,5 +45,9 @@ $secondary-color: #333333;
 
 .background-dark {
 	background-color: $secondary-color;
+}
+
+.content {
+	max-width: 1400px;
 }
 </style>

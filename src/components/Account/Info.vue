@@ -1,8 +1,8 @@
 <script setup>
-import { useSchoolsStore } from "@/stores/schools";
-import { useUsersStore } from "@/stores/users";
+import UserInfo from "@/components/Account/UserInfo.vue";
 import EditProfileModal from "@/components/Account/EditProfileModal.vue";
 import { ref, watch } from "vue";
+import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({
 	user: { type: Object, required: true },
@@ -10,11 +10,9 @@ const props = defineProps({
 });
 
 const user = props.user;
-const userSchool = useSchoolsStore().getSchoolById(user.schoolId).name;
 const highLightedBadge = ref(props.highLightedBadge);
 let isThisUserPage = false;
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 if (useUsersStore().isUserLogged() && user.id === useUsersStore().getUserLogged().id) {
 	isThisUserPage = true;
 }
@@ -37,23 +35,7 @@ watch(
 		</div>
 		<!-- Profile Info -->
 		<div class="col-lg-8 pl-lg-0 pb-lg-0 pb-3 text-lg-left text-center">
-			<h3 class="user-name mb-2 mt-4">
-				{{ user.name }}
-			</h3>
-			<span class="user-info d-block">{{ user.email }}</span>
-			<span class="user-info d-block">
-				{{ user.role === "unsigned" ? "Sem cargo" : capitalize(user.role) }}
-				{{ user.role === "estudante" ? " - " + user.internalId : "" }}
-			</span>
-			<span class="user-info d-block">
-				{{ userSchool }}
-			</span>
-			<div v-if="user.course">
-				<span class="user-info d-block"
-					>{{ user.course }}
-					{{ user.year ? `- ${user.year} ano` : "" }}
-				</span>
-			</div>
+			<UserInfo :user="user" />
 		</div>
 		<!-- Profile HighLight Badge + Edit Profile Button -->
 		<div class="col-lg-2 d-flex justify-content-center align-items-center flex-column">
@@ -108,23 +90,16 @@ $quaternary-color: #3fc380;
 }
 
 .profile-pic {
-	max-width: 120px;
-	max-height: 120px;
+	max-width: 150px;
+	max-height: 150px;
 	background-color: $tertiary-color;
 }
 
-.user-name,
-.user-info,
 .badge-title {
 	font-family: "Panton", sans-serif;
 	font-size: 1.7rem;
 	font-weight: 700;
 	color: $secondary-color;
-}
-
-.user-info {
-	font-size: 1rem;
-	font-weight: 400;
 }
 
 .badge-icon {
@@ -133,7 +108,7 @@ $quaternary-color: #3fc380;
 }
 
 .badge-title {
-	font-size: 1.1rem;
+	font-size: 0.9rem;
 }
 
 .empty-badge {

@@ -18,7 +18,7 @@ const updateHighlightedBadge = (badge) => emit("updateHighlightedBadge", badge);
 	<div
 		class="badges row mx-auto py-lg-0 py-sm-3 py-5 mt-5 d-flex justify-content-center align-items-center"
 	>
-		<div class="col-xl-6">
+		<div class="col-xl-6 px-0 pr-xl-4">
 			<div class="badges-info py-3 shadow">
 				<div class="row">
 					<div class="col-9 d-flex align-items-center">
@@ -40,7 +40,7 @@ const updateHighlightedBadge = (badge) => emit("updateHighlightedBadge", badge);
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-6">
+		<div class="col-xl-6 px-0 pl-xl-4">
 			<div class="badges-info py-3 shadow mt-xl-0 mt-5">
 				<div class="row">
 					<div class="col-9 d-flex align-items-center">
@@ -71,7 +71,7 @@ $quaternary-color: #3fc380;
 $quinary-color: #303a39;
 
 .badges {
-	max-width: 1420px;
+	max-width: 1400px;
 }
 
 .badges-info {
@@ -83,7 +83,7 @@ $quinary-color: #303a39;
 .badges-info-title {
 	color: $secondary-color;
 	font-family: "Alkes", sans-serif;
-	font-size: 1.7rem;
+	font-size: 1.55rem;
 	font-weight: 700;
 }
 

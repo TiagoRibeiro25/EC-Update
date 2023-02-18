@@ -39,7 +39,6 @@ onBeforeMount(async () => {
 <style lang="scss" scoped>
 $primary-color: #343e3d;
 $secondary-color: #aedcc0;
-$tertiary-color: #ffffff;
 
 .FAQ-section {
 	background-repeat: no-repeat;

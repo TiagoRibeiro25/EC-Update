@@ -97,7 +97,7 @@ $quaternary-color: #3fc380;
 
 .badge-title {
 	font-family: "Panton", sans-serif;
-	font-size: 1.7rem;
+	font-size: 0.9rem;
 	font-weight: 700;
 	color: $secondary-color;
 }
@@ -105,10 +105,6 @@ $quaternary-color: #3fc380;
 .badge-icon {
 	width: 60px;
 	height: 70px;
-}
-
-.badge-title {
-	font-size: 0.9rem;
 }
 
 .empty-badge {

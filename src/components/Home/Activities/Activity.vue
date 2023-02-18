@@ -120,8 +120,14 @@ $sixth-color: #000000;
 }
 
 .dark-bg {
-	background-color: $primary-color;
+	// background-color: $primary-color;
+	background-color: rgba(52, 62, 61, 0.8);
 	color: $secondary-color;
+	transition: background-color 0.3s ease-in-out;
+
+	&:hover {
+		background-color: $primary-color;
+	}
 
 	& .title-theme h5 {
 		color: $fifth-color;
@@ -152,8 +158,14 @@ $sixth-color: #000000;
 }
 
 .light-bg {
-	background-color: $secondary-color;
+	// background-color: $secondary-color;
+	background-color: rgba(228, 240, 232, 0.8);
 	color: $primary-color;
+	transition: background-color 0.3s ease-in-out;
+
+	&:hover {
+		background-color: $secondary-color;
+	}
 
 	& .title-theme h5 {
 		color: $primary-color;

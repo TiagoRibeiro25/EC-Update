@@ -35,7 +35,7 @@ if (useUsersStore().isUserLogged()) {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 965px) {
 	.cards {
 		&:nth-child(3) {
 			display: none;
@@ -43,7 +43,7 @@ if (useUsersStore().isUserLogged()) {
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 665px) {
 	.cards {
 		&:nth-child(2) {
 			display: none;

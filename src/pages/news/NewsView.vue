@@ -6,7 +6,7 @@ import { useUsersStore } from "@/stores/users";
 
 const theme = useUsersStore().isDarkMode();
 const isUserLogged = useUsersStore().isUserLogged();
-const isUserAdmin = useUsersStore().getUserLogged().role === "admin";
+const isUserAdmin = isUserLogged ? useUsersStore().getUserLogged().role === "admin" : false;
 </script>
 
 <template>

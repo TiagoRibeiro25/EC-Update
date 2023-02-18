@@ -1,5 +1,7 @@
 <script setup>
 import Info from "@/components/Account/Info.vue";
+import Seeds from "@/components/Account/Seeds.vue";
+import Badges from "@/components/Account/Badges/Badges.vue";
 import { useUsersStore } from "@/stores/users";
 import { useBadgesStore } from "@/stores/badges";
 import { onBeforeMount, ref } from "vue";
@@ -15,6 +17,8 @@ const user = ref(useUsersStore().getUserById(id));
 const highLightedBadge = ref(
 	user.value ? useBadgesStore().getBadgeById(user.value.highlightedBadge) : null
 );
+
+const updateHighlightedBadge = (badge) => (highLightedBadge.value = badge);
 
 // Validate the user id
 onBeforeMount(() => {
@@ -41,8 +45,10 @@ onBeforeMount(() => {
 		class="wrapper px-xl-5 px-4 pt-3"
 		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
-		<div v-if="isLoaded" class="px-sm-5 mt-5">
+		<div v-if="isLoaded" class="px-sm-5 mt-5 mb-5">
 			<Info :user="user" :highLightedBadge="highLightedBadge" />
+			<Seeds :user="user" />
+			<Badges :user="user" @updateHighlightedBadge="updateHighlightedBadge" />
 		</div>
 		<div
 			v-else
@@ -60,6 +66,7 @@ $secondary-color: #333333;
 .wrapper,
 .loading-page {
 	min-height: 100vh;
+	min-height: 100dvh;
 }
 
 .background-light {
@@ -69,8 +76,4 @@ $secondary-color: #333333;
 .background-dark {
 	background-color: $secondary-color;
 }
-
-// .loading-page {
-// 	height: 95vh;
-// }
 </style>

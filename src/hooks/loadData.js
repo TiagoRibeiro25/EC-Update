@@ -5,6 +5,7 @@ import { useNewsStore } from "@/stores/news";
 import { useSchoolsStore } from "@/stores/schools";
 import { useThemesStore } from "@/stores/themes";
 import { useUsersStore } from "@/stores/users";
+import { useSeedsStore } from "../stores/seeds";
 
 export async function loadAllUserData() {
 	await useUsersStore().fetchAllData();
@@ -32,4 +33,8 @@ export async function loadSchoolsData() {
 
 export async function loadThemesData() {
 	await useThemesStore().fetchThemes();
+}
+
+export async function loadSeedsData() {
+	await useSeedsStore().fetchSeeds();
 }

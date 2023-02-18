@@ -7,7 +7,6 @@ import { ref } from "vue";
 export const useUsersStore = defineStore("users", () => {
 	const users = ref([]);
 	const roles = ref([]);
-	const seeds = ref([]);
 	const loggedUserId = ref(getLocalStorage("loggedUser") || null);
 	const darkMode = ref(getLocalStorage("darkMode") || false);
 
@@ -15,11 +14,9 @@ export const useUsersStore = defineStore("users", () => {
 	async function fetchAllData() {
 		const usersData = await fetchData("users");
 		const rolesData = await fetchData("roles");
-		const seedsData = await fetchData("seeds");
 
 		users.value = usersData;
 		roles.value = rolesData;
-		seeds.value = seedsData;
 	}
 
 	//* Getters
@@ -50,35 +47,6 @@ export const useUsersStore = defineStore("users", () => {
 
 	// Roles
 	const getRoles = () => roles.value;
-
-	// Seeds
-	const getUserSeeds = (userID, filterByMonth = false) => {
-		let userSeeds = 0;
-		seeds.value.forEach((seed) => {
-			if (seed.userId === userID) userSeeds += seed.seeds;
-		});
-
-		if (!filterByMonth) return userSeeds;
-
-		// Get seeds from current month
-		const currentMonth = new Date().getMonth();
-		const currentYear = new Date().getFullYear();
-		let seedsFromCurrentMonth = 0;
-
-		seeds.value.forEach((seed) => {
-			if (seed.userId === userID) {
-				const seedDate = new Date(seed.date);
-				const seedMonth = seedDate.getMonth();
-				const seedYear = seedDate.getFullYear();
-
-				if (seedMonth === currentMonth && seedYear === currentYear) {
-					seedsFromCurrentMonth += seed.seeds;
-				}
-			}
-		});
-
-		return seedsFromCurrentMonth;
-	};
 
 	// Theme
 	const isDarkMode = () => darkMode.value;
@@ -169,20 +137,6 @@ export const useUsersStore = defineStore("users", () => {
 		setLocalStorage("roles", roles.value);
 	};
 
-	const addSeeds = (seeds) => {
-		// add to the current logged user
-		const user = getUserById(loggedUserId.value);
-		const newSeedData = {
-			id: seeds.value.length === 0 ? 1 : seeds.value.at(-1).id + 1,
-			userId: user.id,
-			seeds: seeds,
-			date: Date.now(),
-		};
-
-		seeds.value.push(newSeedData);
-		setLocalStorage("seeds", seeds.value);
-	};
-
 	const increaseMeetingsCreated = () => {
 		const user = getUserById(loggedUserId.value);
 		user.meetingsCreated++;
@@ -209,7 +163,6 @@ export const useUsersStore = defineStore("users", () => {
 		doesUserExist,
 		getUsersBySchool,
 		getRoles,
-		getUserSeeds,
 		isUserLogged,
 		getUserLogged,
 		changeUserRole,
@@ -220,7 +173,6 @@ export const useUsersStore = defineStore("users", () => {
 		createNewUser,
 		deleteUsersFromSchool,
 		addRole,
-		addSeeds,
 		increaseMeetingsCreated,
 		increaseActivitiesCreated,
 		fetchAllData,

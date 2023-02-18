@@ -122,7 +122,6 @@ const changeInfo = () => {
 };
 </script>
 
-<!-- TODO: modify styling (theme too)  -->
 <template>
 	<b-modal size="lg" hide-footer>
 		<div class="container">

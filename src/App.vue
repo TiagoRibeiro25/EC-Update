@@ -9,6 +9,7 @@ import {
 	loadNewsData,
 	loadSchoolsData,
 	loadThemesData,
+	loadSeedsData,
 } from "@/hooks/loadData.js";
 import SideBar from "@/components/SideBar.vue";
 import { useUsersStore } from "@/stores/users";
@@ -20,33 +21,37 @@ const showContent = ref(false);
 const theme = ref(useUsersStore().isDarkMode());
 
 onBeforeMount(async () => {
+	loadingMessage.value = "Cultivando a esperança...";
+	await loadSeedsData();
+	loadingPercentage.value = ((100 / 7) * 1).toFixed(0);
+
 	loadingMessage.value = "Plantando árvores...";
 	await loadAllUserData();
-	loadingPercentage.value = ((100 / 7) * 1).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 2).toFixed(0);
 
 	loadingMessage.value = "Preservando os oceanos...";
 	await loadBadgesData();
-	loadingPercentage.value = ((100 / 7) * 2).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 3).toFixed(0);
 
 	loadingMessage.value = "Fortalecendo a luta pela natureza...";
 	await loadActivitiesData();
-	loadingPercentage.value = ((100 / 7) * 3).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 4).toFixed(0);
 
 	loadingMessage.value = "Investindo em energias limpas...";
 	await loadMeetingsData();
-	loadingPercentage.value = ((100 / 7) * 4).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 5).toFixed(0);
 
 	loadingMessage.value = "Eliminando fontes de poluição...";
 	await loadNewsData();
-	loadingPercentage.value = ((100 / 7) * 5).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 6).toFixed(0);
 
 	loadingMessage.value = "Colaborando para um futuro mais limpo...";
 	await loadSchoolsData();
-	loadingPercentage.value = ((100 / 7) * 6).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 7).toFixed(0);
 
 	loadingMessage.value = "Investindo em soluções verdes...";
 	await loadThemesData();
-	loadingPercentage.value = ((100 / 7) * 7).toFixed(0);
+	loadingPercentage.value = ((100 / 8) * 8).toFixed(0);
 	loadingMessage.value = "Bem-vindo(a) ao Ecoly!";
 
 	// Prevent scrolling while loading
@@ -116,6 +121,7 @@ $secondary-color: #333333;
 
 .wrapper {
 	min-height: 100vh;
+	min-height: 100dvh;
 	overflow-x: hidden;
 }
 
@@ -147,6 +153,7 @@ $secondary-color: #333333;
 
 .loading-container {
 	height: 100vh;
+	height: 100dvh;
 
 	& .loading-icon {
 		width: 3.5rem;

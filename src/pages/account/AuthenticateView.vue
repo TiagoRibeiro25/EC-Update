@@ -42,6 +42,7 @@ $secondary-color: #333333;
 
 .column {
 	min-height: 100vh;
+	min-height: 100dvh;
 	overflow-x: hidden;
 }
 

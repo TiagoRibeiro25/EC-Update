@@ -2,6 +2,7 @@
 import { useSchoolsStore } from "@/stores/schools";
 import { useUsersStore } from "@/stores/users";
 import EditProfileModal from "@/components/Account/EditProfileModal.vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
 	user: { type: Object, required: true },
@@ -10,14 +11,18 @@ const props = defineProps({
 
 const user = props.user;
 const userSchool = useSchoolsStore().getSchoolById(user.schoolId).name;
-const highLightedBadge = props.highLightedBadge;
+const highLightedBadge = ref(props.highLightedBadge);
 let isThisUserPage = false;
 
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 if (useUsersStore().isUserLogged() && user.id === useUsersStore().getUserLogged().id) {
 	isThisUserPage = true;
 }
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+watch(
+	() => props.highLightedBadge,
+	(newVal) => (highLightedBadge.value = newVal)
+);
 </script>
 
 <template>
@@ -124,11 +129,11 @@ $quaternary-color: #3fc380;
 
 .badge-icon {
 	width: 60px;
-	height: auto;
+	height: 70px;
 }
 
 .badge-title {
-	font-size: 0.8rem;
+	font-size: 1.1rem;
 }
 
 .empty-badge {

@@ -50,7 +50,6 @@ const theme = useUsersStore().isDarkMode();
 <style lang="scss" scoped>
 $primary-color: #343e3d;
 $secondary-color: #aedcc0;
-$tertiary-color: #3fc380;
 $fourth-color: #ffffff;
 $fifth-color: #333;
 $sixth-color: #18516f;

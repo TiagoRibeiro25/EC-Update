@@ -26,7 +26,6 @@ $primary-color: #343e3d;
 $secondary-color: #e4f0e8;
 $tertiary-color: #ffffff;
 $fourth-color: #18516f;
-$fifth-color: #aedcc0;
 $sixth-color: #000000;
 
 .recent-activities-error {

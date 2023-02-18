@@ -20,12 +20,6 @@ const activities = useActivitiesStore().getUnfinishedActivities().slice(0, 3);
 </template>
 
 <style lang="scss" scoped>
-$primary-color: #343e3d;
-$secondary-color: #e4f0e8;
-$tertiary-color: #ffffff;
-$fourth-color: #18516f;
-$fifth-color: #aedcc0;
-
 .activities {
 	background-repeat: no-repeat;
 	background-position: center;

@@ -80,7 +80,6 @@ watch(
 $primary-color: #343e3d;
 $secondary-color: #aedcc0;
 $tertiary-color: #6ea952;
-$quaternary-color: #3fc380;
 
 .top-info {
 	background-color: $primary-color;

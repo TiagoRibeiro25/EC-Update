@@ -66,7 +66,6 @@ const updateHighlightedBadge = (badge) => emit("updateHighlightedBadge", badge);
 <style lang="scss" scoped>
 $primary-color: #343e3d;
 $secondary-color: #aedcc0;
-$tertiary-color: #6ea952;
 $quaternary-color: #3fc380;
 $quinary-color: #303a39;
 

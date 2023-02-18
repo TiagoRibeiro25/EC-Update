@@ -223,7 +223,7 @@ const changeInfo = () => {
 					<b-button
 						type="submit"
 						variant="primary"
-						class="btn btn-primary btn-block"
+						class="btn btn-block submit-btn"
 						:disabled="!validateForm || loading"
 					>
 						Alterar
@@ -235,10 +235,27 @@ const changeInfo = () => {
 </template>
 
 <style lang="scss" scoped>
+$primary-color: #343e3d;
+$tertiary-color: #ffffff;
+$fourth-color: #18516f;
+
 .modal-title {
 	font-family: "Panton", sans-serif;
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: #343e3d;
+}
+
+.submit-btn {
+	font-family: "Panton", sans-serif;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: $tertiary-color;
+	background-color: $primary-color;
+	border: none;
+
+	&:hover {
+		background-color: $fourth-color;
+	}
 }
 </style>

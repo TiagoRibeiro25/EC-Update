@@ -69,8 +69,9 @@ const router = createRouter({
 			component: () => import("@/pages/manage/ManageView.vue"),
 			beforeEnter(to, from, next) {
 				if (useUsersStore().isUserLogged()) {
-					if (useUsersStore().getUserLogged().role === "admin") next();
-					else next({ name: "Account" });
+					if (useUsersStore().getUserLogged().role === "unsigned") {
+						next({ name: "Account" });
+					} else next();
 				} else next({ name: "Authenticate" });
 			},
 		},

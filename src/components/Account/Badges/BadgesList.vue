@@ -23,9 +23,9 @@ const contrastBg = (index) => index % 2 === 0;
 const changeHighlightedBadge = (badge) => {
 	if (isThisUserProfile()) {
 		useUsersStore().updateHighlightedBadge(badge.id);
+		highlightedBadge.value = badge;
+		emit("updateHighlightedBadge", badge);
 	}
-	highlightedBadge.value = badge;
-	emit("updateHighlightedBadge", badge);
 };
 </script>
 

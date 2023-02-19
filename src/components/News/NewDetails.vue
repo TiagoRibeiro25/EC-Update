@@ -26,7 +26,7 @@ const formatText = (text, max) => {
 					<router-link
 						:to="{ name: 'NewsDetails', params: { id: newItem.id } }"
 						class="new-title"
-						:class="theme ? 'dark-theme-text' : 'light-theme-text'"
+						:class="theme ? 'dark-theme-title' : 'light-theme-title'"
 					>
 						{{ newItem.title }}
 					</router-link>
@@ -99,8 +99,16 @@ $fifth-color: #aedcc0;
 	font-size: 0.9rem;
 }
 
-.dark-theme-text {
+.dark-theme-title {
 	color: $fifth-color;
+}
+
+.light-theme-title {
+	color: $primary-color;
+}
+
+.dark-theme-text {
+	color: $tertiary-color;
 }
 
 .light-theme-text {

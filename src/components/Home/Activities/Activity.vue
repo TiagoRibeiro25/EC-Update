@@ -1,6 +1,7 @@
 <script setup>
 import { useThemesStore } from "@/stores/themes";
 import { convertDateToString } from "@/hooks/convertDate";
+import { formatText } from "@/hooks/formatData.js";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
@@ -13,11 +14,6 @@ const activity = props.activity;
 function getThemeName(themeId) {
 	const theme = useThemesStore().getThemeById(themeId);
 	return theme.name;
-}
-
-function formatTitle(title) {
-	const max_length = 30;
-	return title.length > max_length ? title.substring(0, max_length) + "..." : title;
 }
 </script>
 
@@ -33,7 +29,7 @@ function formatTitle(title) {
 		</header>
 		<main class="px-3 mt-2">
 			<div class="title-theme">
-				<h5>{{ formatTitle(activity.title) }}</h5>
+				<h5>{{ formatText(activity.title, 30) }}</h5>
 				<span>{{ getThemeName(activity.themeId) }}</span>
 			</div>
 			<div class="dates d-flex align-items-center justify-content-center flex-column">

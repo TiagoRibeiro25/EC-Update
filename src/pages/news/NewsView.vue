@@ -1,7 +1,8 @@
 <script setup>
 import Header from "@/components/Header.vue";
-import SearchBar from "../../components/SearchBar.vue";
+import SearchBar from "@/components/SearchBar.vue";
 import CreateNewBtn from "@/components/News/CreateNewBtn.vue";
+import NewsList from "@/components/News/NewsList.vue";
 import { useUsersStore } from "@/stores/users";
 
 const theme = useUsersStore().isDarkMode();
@@ -24,12 +25,12 @@ const isUserAdmin = isUserLogged ? useUsersStore().getUserLogged().role === "adm
 				<Header title="NOTÍCIAS" :theme="theme" />
 			</div>
 		</div>
-		<div
-			class="row content mx-auto px-5 mt-4"
-			:class="{ 'd-none': !isUserLogged || !isUserAdmin }"
-		>
-			<div class="col-12 px-0">
+		<div class="row content mx-auto px-5 mt-3">
+			<div class="col-12 px-0 mb-2" :class="{ 'd-none': !isUserLogged || !isUserAdmin }">
 				<CreateNewBtn :theme="theme" />
+			</div>
+			<div class="col-12 px-0 mt-4">
+				<NewsList :theme="theme" />
 			</div>
 		</div>
 	</div>

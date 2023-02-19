@@ -1,6 +1,6 @@
 <script setup>
 import SeedImg from "@/components/Account/SeedImg.vue";
-import { formatNumber } from "@/hooks/formatNumber.js";
+import { formatNumber } from "@/hooks/formatData.js";
 import { useSeedsStore } from "@/stores/seeds";
 
 const props = defineProps({ user: { type: Object, required: true } });

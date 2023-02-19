@@ -21,3 +21,7 @@ export function formatNumber(number, decimalPlaces = 1) {
 	}
 	return number.toString();
 }
+
+export function formatText(text, maxLength = 20) {
+	return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+}

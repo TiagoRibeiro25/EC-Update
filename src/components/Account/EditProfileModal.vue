@@ -222,7 +222,6 @@ const changeInfo = () => {
 				<div class="form-group" :class="loading ? 'mt-2' : 'mt-5'">
 					<b-button
 						type="submit"
-						variant="primary"
 						class="btn btn-block submit-btn"
 						:disabled="!validateForm || loading"
 					>
@@ -236,8 +235,8 @@ const changeInfo = () => {
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;
-$tertiary-color: #ffffff;
-$fourth-color: #18516f;
+$secondary-color: #ffffff;
+$tertiary-color: #18516f;
 
 .modal-title {
 	font-family: "Panton", sans-serif;
@@ -250,12 +249,12 @@ $fourth-color: #18516f;
 	font-family: "Panton", sans-serif;
 	font-size: 1.2rem;
 	font-weight: 600;
-	color: $tertiary-color;
+	color: $secondary-color;
 	background-color: $primary-color;
 	border: none;
 
 	&:hover {
-		background-color: $fourth-color;
+		background-color: $tertiary-color;
 	}
 }
 </style>

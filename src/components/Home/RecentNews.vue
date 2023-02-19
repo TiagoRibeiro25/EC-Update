@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import { formatText } from "@/hooks/formatData.js";
+import { convertDateToString } from "@/hooks/convertDate.js";
 import { useNewsStore } from "@/stores/news";
 import Arrow from "@/components/Home/Arrow.vue";
 
@@ -9,10 +11,6 @@ const theme = props.theme;
 const news = ref(useNewsStore().getNews());
 news.value = news.value.slice(0, 5);
 const slide = ref(0);
-
-const reduceText = (text) => text.substring(0, 250) + "...";
-const formatTitle = (title) => (title.substring(0, 44) + "...").toUpperCase();
-const formatDate = (date) => new Date(date).toLocaleDateString("pt-PT");
 </script>
 
 <template>
@@ -43,7 +41,7 @@ const formatDate = (date) => new Date(date).toLocaleDateString("pt-PT");
 							'recent-new-title-dark': theme,
 						}"
 					>
-						{{ formatTitle(news[slide].title) }}
+						{{ formatText(news[slide].title, 44).toUpperCase() }}
 					</h1>
 				</div>
 				<div class="row-6" style="height: 136px">
@@ -54,7 +52,7 @@ const formatDate = (date) => new Date(date).toLocaleDateString("pt-PT");
 							'recent-new-text-dark': theme,
 						}"
 					>
-						{{ reduceText(news[slide].body) }}
+						{{ formatText(news[slide].body, 250) }}
 					</p>
 				</div>
 				<div class="row-3">
@@ -67,7 +65,7 @@ const formatDate = (date) => new Date(date).toLocaleDateString("pt-PT");
 									'recent-new-text-dark': theme,
 								}"
 							>
-								{{ formatDate(news[slide].date) }}
+								{{ convertDateToString(news[slide].date) }}
 							</p>
 						</div>
 						<div class="col-6 text-right mt-3">

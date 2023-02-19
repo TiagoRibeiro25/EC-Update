@@ -249,7 +249,7 @@ $tertiary-color: #3fc380;
 
 	& a:hover {
 		& span {
-			text-decoration: underline;
+			color: $tertiary-color;
 		}
 	}
 }

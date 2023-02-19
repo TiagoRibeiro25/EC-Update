@@ -20,10 +20,8 @@ const theme = props.theme;
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;
-$secondary-color: #aedcc0;
-$tertiary-color: #3fc380;
-$fourth-color: #ffffff;
-$fifth-color: #18516f;
+$secondary-color: #ffffff;
+$tertiary-color: #18516f;
 
 .add-new-btn {
 	font-family: "Panton", sans-serif;
@@ -33,21 +31,21 @@ $fifth-color: #18516f;
 
 .btn-light {
 	background-color: $primary-color;
-	color: $fourth-color;
+	color: $secondary-color;
 
 	&:hover {
-		background-color: $fifth-color;
-		color: $fourth-color;
+		background-color: $tertiary-color;
+		color: $secondary-color;
 	}
 }
 
 .btn-dark {
-	background-color: $fourth-color;
+	background-color: $secondary-color;
 	color: $primary-color;
 
 	&:hover {
-		background-color: $fifth-color;
-		color: $fourth-color;
+		background-color: $tertiary-color;
+		color: $secondary-color;
 
 		& img {
 			filter: invert(0);

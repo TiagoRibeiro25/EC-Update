@@ -15,7 +15,7 @@ watchEffect(() => {
 		index++;
 		if (index >= news.length) clearInterval(interval);
 	}, 200);
-});
+}, []);
 </script>
 
 <template>

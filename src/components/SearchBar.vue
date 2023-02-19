@@ -14,11 +14,6 @@ const search = ref("");
 const data = ref([]);
 const showModal = ref(false);
 
-const showResults = () => {
-	console.log(data.value);
-	showModal.value = true;
-};
-
 const searchNews = computed(async () => {
 	const news = await useNewsStore().searchNews(search.value);
 	data.value = [...data.value, ...news];
@@ -45,7 +40,7 @@ watch(search, async () => {
 		return;
 	}
 
-	showResults();
+	showModal.value = true;
 });
 </script>
 

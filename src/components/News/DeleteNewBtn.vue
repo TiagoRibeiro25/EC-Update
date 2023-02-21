@@ -49,7 +49,7 @@ const deleteNew = () => {
 			</h4>
 
 			<div v-if="removing" class="w-100 text-center mt-3">
-				<b-spinner variant="success" label="Carregando..."></b-spinner>
+				<b-spinner variant="danger" label="Carregando..."></b-spinner>
 			</div>
 
 			<div class="mt-4 mb-3">

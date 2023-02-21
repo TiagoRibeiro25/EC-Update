@@ -26,6 +26,7 @@ const isNewItemHovered = ref(false);
 .news-image {
 	border-radius: 20px 0 0 20px;
 	object-fit: cover;
+	max-height: 300px;
 }
 
 .overlay-image {

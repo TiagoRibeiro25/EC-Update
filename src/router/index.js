@@ -27,10 +27,8 @@ const router = createRouter({
 			name: "NewsCreate",
 			component: () => import("@/pages/news/NewsCreateView.vue"),
 			beforeEnter(to, from, next) {
-				if (useUsersStore().isUserLogged()) {
-					if (useUsersStore().getUserLogged().role === "admin") next();
-					else next({ name: "News" });
-				} else next({ name: "Authenticate" });
+				if (useUsersStore().isUserLogged()) next();
+				else next({ name: "Authenticate" });
 			},
 		},
 		{
@@ -43,10 +41,8 @@ const router = createRouter({
 			name: "ActivitiesCreate",
 			component: () => import("@/pages/activities/ActivitiesCreateView.vue"),
 			beforeEnter(to, from, next) {
-				if (useUsersStore().isUserLogged()) {
-					if (useUsersStore().getUserLogged().role !== "unsigned") next();
-					else next({ name: "Activities" });
-				} else next({ name: "Authenticate" });
+				if (useUsersStore().isUserLogged()) next();
+				else next({ name: "Authenticate" });
 			},
 		},
 		{
@@ -68,11 +64,8 @@ const router = createRouter({
 			name: "Manage",
 			component: () => import("@/pages/manage/ManageView.vue"),
 			beforeEnter(to, from, next) {
-				if (useUsersStore().isUserLogged()) {
-					if (useUsersStore().getUserLogged().role === "unsigned") {
-						next({ name: "Account" });
-					} else next();
-				} else next({ name: "Authenticate" });
+				if (useUsersStore().isUserLogged()) next();
+				else next({ name: "Authenticate" });
 			},
 		},
 		{
@@ -80,10 +73,8 @@ const router = createRouter({
 			name: "AdminMenu",
 			component: () => import("@/pages/manage/AdminMenuView.vue"),
 			beforeEnter(to, from, next) {
-				if (useUsersStore().isUserLogged()) {
-					if (useUsersStore().getUserLogged().role === "admin") next();
-					else next({ name: "NotFound" });
-				} else next({ name: "Authenticate" });
+				if (useUsersStore().isUserLogged()) next();
+				else next({ name: "Authenticate" });
 			},
 		},
 		{
@@ -92,7 +83,6 @@ const router = createRouter({
 			component: () => import("@/pages/account/AccountView.vue"),
 			beforeEnter(to, from, next) {
 				const id = to.params.id.toString();
-				// check if the user is logged
 				if (!useUsersStore().isUserLogged() && id === "me") {
 					next({ name: "Authenticate" });
 				}

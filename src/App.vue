@@ -63,7 +63,7 @@ onBeforeMount(async () => {
 
 	setTimeout(() => {
 		showContent.value = true;
-	}, 500);
+	}, 600);
 
 	setTimeout(() => {
 		// Allow scrolling after loading

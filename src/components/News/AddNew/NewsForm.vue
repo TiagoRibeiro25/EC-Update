@@ -5,6 +5,9 @@ import { useUsersStore } from "@/stores/users";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
+const props = defineProps({ theme: { type: Boolean, required: true } });
+const theme = ref(props.theme);
+
 const router = useRouter();
 const images = ref([]);
 const title = ref("");
@@ -38,6 +41,7 @@ const createNew = () => {
 			<input
 				type="text"
 				class="form-control w-75 py-4 px-4 mt-5 mb-2"
+				:class="theme ? 'input-dark-theme' : 'input-light-theme'"
 				placeholder="Título da notícia"
 				aria-label="Título da notícia"
 				v-model="title"
@@ -47,6 +51,7 @@ const createNew = () => {
 				cols="30"
 				rows="10"
 				class="form-control w-75 py-4 px-4 mt-5 mb-5"
+				:class="theme ? 'input-dark-theme' : 'input-light-theme'"
 				placeholder="Conteúdo da notícia"
 				aria-label="Conteúdo da notícia"
 				v-model="content"
@@ -59,6 +64,7 @@ const createNew = () => {
 			<button
 				type="submit"
 				class="btn px-4 addNewBtn"
+				:class="theme ? 'addNewBtn-dark-theme' : 'addNewBtn-light-theme'"
 				aria-label="Adicionar notícia"
 				:disabled="!title || !content || images.length === 0"
 			>
@@ -78,23 +84,53 @@ $fifth-color: #18516f;
 form {
 	input,
 	textarea {
+		background-color: transparent;
 		border: 2px solid $tertiary-color;
 		border-radius: 15px;
 		font-family: "Panton", sans-serif;
 		font-size: 1.2rem;
 		font-weight: 600;
+
+		&:focus,
+		&:active {
+			outline: none;
+			background-color: transparent;
+			border: 2px solid $tertiary-color;
+			box-shadow: 0 0 0 5px rgba(174, 220, 192, 0.25);
+		}
 	}
 }
 
 .addNewBtn {
-	background-color: $primary-color;
-	color: $fourth-color;
 	border: none;
 	outline: transparent;
 	border-radius: 15px;
 	font-family: "Panton", sans-serif;
 	font-size: 1.1rem;
 	font-weight: 600;
+}
+
+.input-dark-theme {
+	color: $secondary-color;
+}
+
+.input-light-theme {
+	color: $primary-color;
+}
+
+.addNewBtn-dark-theme {
+	background-color: $fourth-color;
+	color: $primary-color;
+
+	&:hover {
+		color: $fourth-color;
+		background-color: $fifth-color;
+	}
+}
+
+.addNewBtn-light-theme {
+	background-color: $primary-color;
+	color: $fourth-color;
 
 	&:hover {
 		background-color: $fifth-color;

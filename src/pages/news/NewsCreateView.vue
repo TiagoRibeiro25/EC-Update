@@ -32,7 +32,7 @@ onBeforeMount(() => {
 			</div>
 			<div class="row content mx-auto mt-3">
 				<div class="col-12 px-0">
-					<NewsForm />
+					<NewsForm :theme="theme" />
 				</div>
 			</div>
 		</div>
@@ -40,12 +40,16 @@ onBeforeMount(() => {
 	<div
 		v-else
 		class="loading-page pb-5 d-flex justify-content-center align-items-center flex-column"
+		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
 		<b-spinner variant="success" label="Carregando..."></b-spinner>
 	</div>
 </template>
 
 <style lang="scss" scoped>
+$primary-color: #f8f9fa;
+$secondary-color: #333333;
+
 .wrapper,
 .loading-page {
 	min-height: 100vh;
@@ -54,5 +58,13 @@ onBeforeMount(() => {
 
 .content {
 	max-width: 1300px;
+}
+
+.background-dark {
+	background-color: $secondary-color;
+}
+
+.background-light {
+	background-color: $primary-color;
 }
 </style>

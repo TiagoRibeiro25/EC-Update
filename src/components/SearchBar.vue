@@ -14,13 +14,13 @@ const search = ref("");
 const data = ref([]);
 const showModal = ref(false);
 
-const searchNews = computed(async () => {
-	const news = await useNewsStore().searchNews(search.value);
+const searchNews = computed(() => {
+	const news = useNewsStore().searchNews(search.value);
 	data.value = [...data.value, ...news];
 });
 
-const searchActivities = computed(async () => {
-	const activities = await useActivitiesStore().searchActivities(search.value);
+const searchActivities = computed(() => {
+	const activities = useActivitiesStore().searchActivities(search.value);
 	data.value = [...data.value, ...activities];
 });
 
@@ -32,15 +32,10 @@ watch(search, async () => {
 	}
 
 	data.value = [];
-	if (currentPage === "News" || currentPage === "Home") await searchNews.value;
-	if (currentPage === "Activities" || currentPage === "Home") await searchActivities.value;
+	if (currentPage === "News" || currentPage === "Home") searchNews.value;
+	if (currentPage === "Activities" || currentPage === "Home") searchActivities.value;
 
-	if (data.value.length === 0) {
-		showModal.value = false;
-		return;
-	}
-
-	showModal.value = true;
+	showModal.value = data.value.length === 0 ? false : true;
 });
 </script>
 

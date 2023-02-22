@@ -40,11 +40,11 @@ const interval = setInterval(() => {
 
 @keyframes slideIn {
 	0% {
-		transform: translateX(200%);
+		transform: translateX(200%) scale(0.5);
 		opacity: 0;
 	}
 	100% {
-		transform: translateX(0);
+		transform: translateX(0) scale(1);
 		opacity: 1;
 	}
 }

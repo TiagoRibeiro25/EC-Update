@@ -1,6 +1,7 @@
 <script setup>
-import DeleteNewBtn from "@/components/News/DeleteNewBtn.vue";
+import DeleteBtn from "@/components/DeleteBtn.vue";
 import { convertDateToString } from "@/hooks/convertDate.js";
+import { formatText } from "@/hooks/formatData.js";
 import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({
@@ -12,10 +13,6 @@ const theme = props.theme;
 const newItem = props.newItem;
 const isUserLogged = useUsersStore().isUserLogged();
 const isUserAdmin = isUserLogged && useUsersStore().getUserLogged().role === "admin";
-
-const formatText = (text, max) => {
-	return text.length > max ? text.substring(0, max) + "..." : text;
-};
 </script>
 
 <template>
@@ -33,7 +30,7 @@ const formatText = (text, max) => {
 				</h2>
 			</div>
 			<div v-if="isUserAdmin" class="col-4">
-				<DeleteNewBtn :theme="theme" :newItemId="newItem.id" />
+				<DeleteBtn :theme="theme" type="news" :itemId="newItem.id" />
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -61,10 +58,8 @@ const formatText = (text, max) => {
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;
-$secondary-color: #e4f0e8;
-$tertiary-color: #ffffff;
-$fourth-color: #18516f;
-$fifth-color: #aedcc0;
+$secondary-color: #ffffff;
+$tertiary-color: #aedcc0;
 
 .new-info {
 	height: 300px;
@@ -100,7 +95,7 @@ $fifth-color: #aedcc0;
 }
 
 .dark-theme-title {
-	color: $fifth-color;
+	color: $tertiary-color;
 }
 
 .light-theme-title {
@@ -108,7 +103,7 @@ $fifth-color: #aedcc0;
 }
 
 .dark-theme-text {
-	color: $tertiary-color;
+	color: $secondary-color;
 }
 
 .light-theme-text {

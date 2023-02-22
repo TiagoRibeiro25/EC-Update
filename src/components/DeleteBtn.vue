@@ -1,20 +1,25 @@
 <script setup>
 import { useNewsStore } from "@/stores/news";
+import { useActivitiesStore } from "@/stores/activities";
 import { ref } from "vue";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
-	newItemId: { type: Number, required: true },
+	itemId: { type: Number, required: true },
+	type: { type: String, required: true }, // "news" or "activities"
 });
 
 const theme = props.theme;
-const newItemId = props.newItemId;
+const type = props.type;
+const itemId = props.itemId;
 const modalId = `modal-${crypto.randomUUID()}`;
 const removing = ref(false);
 
-const deleteNew = () => {
+const deleteItem = () => {
 	removing.value = true;
-	useNewsStore().removeNew(newItemId);
+
+	if (type === "news") useNewsStore().removeNew(itemId);
+	else useActivitiesStore().removeActivity(itemId);
 
 	setTimeout(() => {
 		window.location.reload();
@@ -26,7 +31,7 @@ const deleteNew = () => {
 	<div>
 		<button
 			type="button"
-			class="remove-new-btn btn btn-sm rounded-pill px-3 float-right mt-2"
+			class="remove-btn btn btn-sm rounded-pill px-3 float-right mt-2"
 			:class="!theme ? 'light-theme-btn' : 'dark-theme-btn'"
 			@click="$bvModal.show(modalId)"
 		>
@@ -45,7 +50,8 @@ const deleteNew = () => {
 	<b-modal :id="modalId" size="lg" hide-footer>
 		<div class="container">
 			<h4 class="modal-title text-center mt-1">
-				Tens a certeza que queres remover esta notícia?
+				Tens a certeza que queres remover esta
+				{{ type === "news" ? "notícia" : "atividade" }}?
 			</h4>
 
 			<div v-if="removing" class="w-100 text-center mt-3">
@@ -57,7 +63,7 @@ const deleteNew = () => {
 					type="submit"
 					class="btn btn-block modal-remove-btn w-50 mx-auto"
 					:disabled="removing"
-					@click="deleteNew"
+					@click="deleteItem"
 				>
 					Remover
 				</b-button>
@@ -73,7 +79,7 @@ $tertiary-color: #18516f;
 $fourth-color: #8e0101;
 $fifth-color: #b50202;
 
-.remove-new-btn {
+.remove-btn {
 	font-family: "Panton", sans-serif;
 	font-weight: 600;
 	font-size: 14px;

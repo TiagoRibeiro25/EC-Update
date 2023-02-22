@@ -37,13 +37,4 @@ const isNewItemHovered = ref(false);
 	transition: opacity 0.5s;
 	cursor: pointer;
 }
-
-@keyframes slideIn {
-	from {
-		transform: translateX(-100%);
-	}
-	to {
-		transform: translateX(0);
-	}
-}
 </style>

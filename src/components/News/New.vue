@@ -1,5 +1,5 @@
 <script setup>
-import NewImg from "@/components/News/NewImg.vue";
+import HighlightImg from "@/components/HighlightImg.vue";
 import NewDetails from "@/components/News/NewDetails.vue";
 
 const props = defineProps({
@@ -17,7 +17,7 @@ const newItem = props.newItem;
 	>
 		<div class="col-4 px-0 d-lg-block d-none">
 			<router-link :to="{ name: 'NewsDetails', params: { id: newItem.id } }">
-				<NewImg :image="newItem.images[0]" />
+				<HighlightImg :image="newItem.images[0]" />
 			</router-link>
 		</div>
 		<div class="col-lg-8 col-12 px-0">

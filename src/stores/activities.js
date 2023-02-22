@@ -15,8 +15,14 @@ export const useActivitiesStore = defineStore("activities", () => {
 	//* Getters
 	const getActivities = () => activities.value;
 
-	const getUnfinishedActivities = () => {
-		return activities.value.filter((activity) => activity.status === "unfinished");
+	const getUnfinishedActivities = (schoolID = null) => {
+		if (schoolID === null) {
+			return activities.value.filter((activity) => activity.status === "unfinished");
+		} else {
+			return activities.value.filter(
+				(activity) => activity.status === "unfinished" && activity.schoolId === schoolID
+			);
+		}
 	};
 
 	const getActivityById = (activityId) => {

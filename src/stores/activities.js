@@ -24,7 +24,7 @@ export const useActivitiesStore = defineStore("activities", () => {
 		});
 	};
 
-	const getUnfinishedActivities = (schoolID = null, filterByYear = false) => {
+	const getUnfinishedActivities = (filterByYear = false, schoolID = null) => {
 		let result = [];
 		if (schoolID === null) {
 			result = activities.value.filter((activity) => activity.status === "unfinished");

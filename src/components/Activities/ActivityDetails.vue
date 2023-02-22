@@ -1,5 +1,8 @@
 <script setup>
 import DeleteBtn from "@/components/DeleteBtn.vue";
+import ActivityTheme from "@/components/Activities/ActivityTheme.vue";
+import ActivityFinishBtn from "@/components/Activities/ActivityFinishBtn.vue";
+import { convertDateToString } from "@/hooks/convertDate.js";
 import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({
@@ -32,6 +35,55 @@ const isActivityFromUserSchool =
 				<DeleteBtn :theme="theme" type="activities" :itemId="activity.id" />
 			</div>
 		</div>
+		<div class="row mt-3">
+			<div class="col-12">
+				<p
+					class="activity-description"
+					:class="theme ? 'dark-theme-text' : 'light-theme-text'"
+				>
+					{{ activity.meta }}
+					<br />
+					{{ activity.objective }}
+					<br />
+					{{ activity.participants }}
+				</p>
+			</div>
+		</div>
+		<div class="row mt-2 px-3">
+			<div class="col-6 mt-2">
+				<div class="row">
+					<p
+						class="mb-1 activity-date"
+						:class="theme ? 'dark-theme-text' : 'light-theme-text'"
+					>
+						Data de início:
+						<span class="text-muted">
+							{{ convertDateToString(activity.initialDate) }}
+						</span>
+					</p>
+				</div>
+				<div class="row py-0">
+					<p
+						class="m-0 activity-date"
+						:class="theme ? 'dark-theme-text' : 'light-theme-text'"
+					>
+						Data final:
+						<span class="text-muted">
+							{{ convertDateToString(activity.finalDate) }}
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-6 d-flex flex-column justify-content-end align-items-end">
+				<div class="row theme">
+					<ActivityTheme :activityTheme="activity.themeId" />
+				</div>
+				<div v-if="isActivityFromUserSchool" class="row">
+					<ActivityFinishBtn :theme="theme" :activityId="activity.id" />
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -58,6 +110,20 @@ $tertiary-color: #aedcc0;
 	&:hover {
 		text-decoration: underline;
 	}
+}
+
+.activity-description,
+.activity-date {
+	font-family: "Panton", sans-serif;
+	font-size: 1.1rem;
+	font-weight: 400;
+	height: 80px;
+	overflow: hidden;
+}
+
+.activity-date {
+	font-size: 1rem;
+	height: auto;
 }
 
 .dark-theme-title {

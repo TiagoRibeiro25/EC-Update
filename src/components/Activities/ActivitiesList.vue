@@ -16,8 +16,8 @@ const delayedActivities = ref([]);
 const activities = computed(() => {
 	const store = useActivitiesStore();
 	return schoolFilter.value === "all"
-		? store.getUnfinishedActivities() // get all activities
-		: store.getUnfinishedActivities(schoolFilter.value); // get activities by school
+		? store.getUnfinishedActivities(true) // get all activities
+		: store.getUnfinishedActivities(true, schoolFilter.value); // get activities by school
 });
 
 watch(

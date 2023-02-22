@@ -1,24 +1,45 @@
 <script setup>
 import Header from "@/components/Header.vue";
+import SearchBar from "@/components/SearchBar.vue";
+import CreateNewBtn from "@/components/CreateNewBtn.vue";
 import { useUsersStore } from "@/stores/users";
-import SearchBar from "../../components/SearchBar.vue";
 
 const theme = useUsersStore().isDarkMode();
+const isUserLogged = useUsersStore().isUserLogged();
+const isVerifiedUser = isUserLogged
+	? useUsersStore().getUserLogged().role !== "unsigned"
+	: false;
 </script>
 
 <template>
 	<div
 		class="wrapper pt-3"
+		style="overflow-y: hidden"
 		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
 		<div class="row">
 			<div class="col-9 d-flex align-items-center mt-4 pt-2">
-				<SearchBar :theme="theme" page="Activities" />
+				<SearchBar :theme="theme" page="News" />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12">
 				<Header title="ATIVIDADES" :theme="theme" />
+			</div>
+		</div>
+		<div class="row content mx-auto px-5 mt-3">
+			<div
+				class="col-12 px-0 mb-2"
+				:class="{ 'd-none': !isUserLogged || !isVerifiedUser }"
+			>
+				<CreateNewBtn
+					:theme="theme"
+					type="ActivitiesCreate"
+					text="Adicionar Atividade"
+				/>
+			</div>
+			<div class="col-12 px-0 mt-4">
+				<!-- <NewsList :theme="theme" /> -->
 			</div>
 		</div>
 	</div>
@@ -34,5 +55,9 @@ $secondary-color: #333333;
 
 .background-dark {
 	background-color: $secondary-color;
+}
+
+.content {
+	max-width: 1400px;
 }
 </style>

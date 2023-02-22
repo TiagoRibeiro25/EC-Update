@@ -1,19 +1,23 @@
 <script setup>
-const props = defineProps({ theme: { type: Boolean, required: true } });
+const props = defineProps({
+	theme: { type: Boolean, required: true },
+	text: { type: String, required: true },
+	type: { type: String, required: true },
+});
 const theme = props.theme;
+const text = props.text;
+const type = props.type;
 </script>
 
 <template>
-	<div style="width: 176px">
-		<router-link :to="{ name: 'NewsCreate' }" class="text-decoration-none">
-			<button
-				type="button"
-				class="add-new-btn btn btn-sm rounded-pill d-flex align-items-center justify-content-start"
-				:class="{ 'btn-light': !theme, 'btn-dark': theme }"
-			>
-				<img src="@/assets/icons/add.svg" alt="add" width="20" />
-				<span class="px-3"> Adicionar Notícia </span>
-			</button>
+	<div style="width: 187px">
+		<router-link
+			:to="{ name: type }"
+			class="text-decoration-none add-new-btn btn btn-sm rounded-pill d-flex align-items-center justify-content-start"
+			:class="{ 'btn-light': !theme, 'btn-dark': theme }"
+		>
+			<img src="@/assets/icons/add.svg" alt="add" width="20" />
+			<span class="px-3"> {{ text }} </span>
 		</router-link>
 	</div>
 </template>

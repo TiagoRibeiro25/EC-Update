@@ -13,7 +13,7 @@ const isUserAdmin = isUserLogged ? useUsersStore().getUserLogged().role === "adm
 <template>
 	<div
 		class="wrapper pt-3"
-		style="overflow-y: hidden"
+		style="overflow: hidden"
 		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
 		<div class="row">

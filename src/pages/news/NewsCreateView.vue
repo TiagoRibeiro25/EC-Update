@@ -22,7 +22,7 @@ onBeforeMount(() => {
 	<div v-if="loaded">
 		<div
 			class="wrapper pt-3"
-			style="overflow-x: hidden"
+			style="overflow: hidden"
 			:class="{ 'background-light': !theme, 'background-dark': theme }"
 		>
 			<div class="row">

@@ -1,5 +1,5 @@
 <script setup>
-import ImgSlider from "@/components/News/AddNew/ImgSlider.vue";
+import ImgSlider from "@/components/CreateItemImgs.vue";
 import { useNewsStore } from "@/stores/news";
 import { useUsersStore } from "@/stores/users";
 import { ref } from "vue";

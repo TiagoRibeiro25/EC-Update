@@ -51,9 +51,11 @@ const selected = ref("all");
 					text="Adicionar Atividade"
 				/>
 			</div>
+			<!-- if !isVerifiedUser align to the left -->
 			<div
 				v-if="isUserLogged"
 				class="col-3 px-0 mb-2 d-flex justify-content-end align-items-center"
+				:class="{ 'col-12': !isVerifiedUser }"
 			>
 				<b-form-select
 					class="filter-select"

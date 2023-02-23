@@ -19,7 +19,6 @@ export const useSchoolsStore = defineStore("schools", () => {
 	const getSchools = () => schools.value;
 
 	const getSchoolById = (schoolId) => {
-		console.log(schoolId);
 		return schools.value.find((school) => school.id === schoolId);
 	};
 

@@ -120,14 +120,14 @@ const createNewAccount = () => {
 		name: userName.value,
 		email: email.value,
 		password: password.value,
-		school: school.value,
-		internalNumber: null,
+		schoolId: school.value,
+		internalId: null,
 		course: null,
 		year: null,
 	};
 
 	if (internalNumber.value !== "") {
-		newUser.internalNumber = internalNumber.value;
+		newUser.internalId = internalNumber.value;
 		if (course.value !== "") {
 			newUser.course = course.value;
 			if (year.value !== "") {

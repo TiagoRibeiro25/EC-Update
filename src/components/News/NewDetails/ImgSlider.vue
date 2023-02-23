@@ -15,7 +15,10 @@ const interval = setInterval(() => {
 </script>
 
 <template>
-	<div v-if="delayedImages.length !== 0" class="row" style="height: 190px">
+	<div
+		v-if="delayedImages.length !== 0"
+		class="row h-100 d-xl-block d-flex justify-content-center align-items-center"
+	>
 		<img
 			v-for="(image, index) in delayedImages"
 			:key="index"

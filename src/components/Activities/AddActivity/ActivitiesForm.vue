@@ -117,8 +117,12 @@ const loading = ref(false);
 				</div>
 			</div>
 			<div class="row w-75">
-				<div class="form-group mt-5">
-					<ComplexityFormInput :theme="theme" @update:model="complexity = $event" />
+				<div
+					class="col-lg-6 pl-lg-0 d-lg-block d-flex flex-column justify-content-center align-items-center mt-5"
+				>
+					<div class="form-group">
+						<ComplexityFormInput :theme="theme" @update:model="complexity = $event" />
+					</div>
 				</div>
 			</div>
 		</form>

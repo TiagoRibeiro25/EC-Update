@@ -53,11 +53,21 @@ $sixth-color: #000000;
 }
 
 .bg-light {
-	background-color: $secondary-color !important;
+	background-color: rgba(228, 240, 232, 0.8) !important;
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		background-color: $secondary-color !important;
+	}
 }
 
 .bg-dark {
-	background-color: $primary-color !important;
+	background-color: rgba(52, 62, 61, 0.8) !important;
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		background-color: $primary-color !important;
+	}
 }
 
 .text-light {

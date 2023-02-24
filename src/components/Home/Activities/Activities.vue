@@ -1,7 +1,5 @@
 <script setup>
 import Activity from "@/components/Home/Activities/Activity.vue";
-import NoActivities from "@/components/Home/Activities/NoActivities.vue";
-import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
@@ -10,27 +8,13 @@ const props = defineProps({
 
 const theme = props.theme;
 let activities = props.activities;
-
-// Show only activities from the school of the user logged
-if (useUsersStore().isUserLogged()) {
-	const user = useUsersStore().getUserLogged();
-	activities = activities.filter((activity) => activity.schoolId === user.schoolId);
-}
 </script>
 
 <template>
-	<div
-		v-if="activities.length > 0"
-		class="cards"
-		v-for="activity in activities"
-		:key="activity.id"
-	>
+	<div class="cards" v-for="activity in activities" :key="activity.id">
 		<div class="mx-4">
 			<Activity :theme="theme" :activity="activity" />
 		</div>
-	</div>
-	<div v-else>
-		<NoActivities v-if="activities.length === 0" :theme="theme" />
 	</div>
 </template>
 

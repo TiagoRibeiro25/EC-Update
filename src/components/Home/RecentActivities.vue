@@ -7,12 +7,7 @@ import Activities from "@/components/Home/Activities/Activities.vue";
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = props.theme;
 
-// If the user is logged show only the activities of the user school
-const isUserLogged = useUsersStore().isUserLogged();
-const userLogged = isUserLogged ? useUsersStore().getUserLogged() : null;
-const userLoggedSchoolId = userLogged ? userLogged.schoolId : null;
-
-const activities = useActivitiesStore().getUnfinishedActivities(true, userLoggedSchoolId);
+const activities = useActivitiesStore().getUnfinishedActivities(true);
 </script>
 
 <template>

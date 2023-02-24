@@ -1,12 +1,18 @@
 <script setup>
 import { useActivitiesStore } from "@/stores/activities";
+import { useUsersStore } from "@/stores/users";
 import NoActivities from "@/components/Home/Activities/NoActivities.vue";
 import Activities from "@/components/Home/Activities/Activities.vue";
 
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = props.theme;
 
-const activities = useActivitiesStore().getUnfinishedActivities().slice(0, 3);
+// If the user is logged show only the activities of the user school
+const isUserLogged = useUsersStore().isUserLogged();
+const userLogged = isUserLogged ? useUsersStore().getUserLogged() : null;
+const userLoggedSchoolId = userLogged ? userLogged.schoolId : null;
+
+const activities = useActivitiesStore().getUnfinishedActivities(true, userLoggedSchoolId);
 </script>
 
 <template>
@@ -14,8 +20,8 @@ const activities = useActivitiesStore().getUnfinishedActivities().slice(0, 3);
 		class="activities mb-5 mx-auto d-flex align-items-center justify-content-center"
 		:class="{ 'background-light': !theme, 'background-dark': theme }"
 	>
-		<Activities :theme="theme" :activities="activities" />
 		<NoActivities v-if="activities.length === 0" :theme="theme" />
+		<Activities v-else :theme="theme" :activities="activities.slice(0, 3)" />
 	</div>
 </template>
 

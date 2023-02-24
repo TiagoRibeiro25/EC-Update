@@ -29,7 +29,6 @@ $primary-color: #343e3d;
 $secondary-color: #aedcc0;
 $tertiary-color: #3fc380;
 $fourth-color: #ffffff;
-$fifth-color: #18516f;
 
 .info-label {
 	font-family: "Panton", sans-serif;

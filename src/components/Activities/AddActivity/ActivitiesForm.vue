@@ -2,14 +2,21 @@
 import ImgSlider from "@/components/CreateItemImgs.vue";
 import TextFormInput from "@/components/Activities/AddActivity/TextFormInput.vue";
 import ComplexityFormInput from "@/components/Activities/AddActivity/ComplexityFormInput.vue";
-import { ref } from "vue";
+import DateFormInput from "@/components/Activities/AddActivity/DateFormInput.vue";
+import ThemeInput from "@/components/Activities/AddActivity/ThemeInput.vue";
+import { useThemesStore } from "@/stores/themes";
+import { useActivitiesStore } from "@/stores/activities";
+import { useUsersStore } from "@/stores/users";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = ref(props.theme);
 
 const router = useRouter();
+
 const images = ref([]);
+const themes = useThemesStore().getActiveThemes();
 
 const title = ref("");
 const diagnostic = ref("");
@@ -20,8 +27,57 @@ const evaluationIndicator = ref("");
 const resources = ref("");
 const evaluationMethod = ref("");
 const complexity = ref(0);
+const initialDate = ref("");
+const finalDate = ref("");
+const themeSelected = ref(null);
 
 const loading = ref(false);
+
+const isFormValid = computed(() => {
+	if (images.value.length === 0) return false;
+	if (title.value === "") return false;
+	if (diagnostic.value === "") return false;
+	if (objective.value === "") return false;
+	if (participants.value === "") return false;
+	if (meta.value === "") return false;
+	if (evaluationIndicator.value === "") return false;
+	if (resources.value === "") return false;
+	if (evaluationMethod.value === "") return false;
+	if (complexity.value === 0) return false;
+	if (initialDate.value === "") return false;
+	if (finalDate.value === "") return false;
+	if (themeSelected.value === null) return false;
+	return new Date(finalDate.value) >= new Date(initialDate.value);
+});
+
+const createActivity = () => {
+	loading.value = true;
+
+	const userLogged = useUsersStore().getUserLogged();
+	const activity = {
+		title: title.value,
+		diagnostic: diagnostic.value,
+		objective: objective.value,
+		participants: participants.value,
+		meta: meta.value,
+		evaluationIndicator: evaluationIndicator.value,
+		resources: resources.value,
+		evaluationMethod: evaluationMethod.value,
+		complexity: complexity.value,
+		initialDate: initialDate.value,
+		finalDate: finalDate.value,
+		themeId: themeSelected.value,
+		images: images.value,
+		creatorId: userLogged.id,
+		schoolId: userLogged.schoolId,
+	};
+
+	useActivitiesStore().addActivity(activity);
+
+	setTimeout(() => {
+		router.push({ name: "Activities" });
+	}, 500);
+};
 </script>
 
 <template>
@@ -29,6 +85,7 @@ const loading = ref(false);
 		<ImgSlider :images="images" />
 		<form
 			class="d-flex flex-column justify-content-center align-items-center mt-5 mb-5 mx-5"
+			@submit.prevent="createActivity"
 		>
 			<div class="row w-75">
 				<!-- Title -->
@@ -120,9 +177,48 @@ const loading = ref(false);
 				<div
 					class="col-lg-6 pl-lg-0 d-lg-block d-flex flex-column justify-content-center align-items-center mt-5"
 				>
-					<div class="form-group">
+					<div class="row form-group px-3">
 						<ComplexityFormInput :theme="theme" @update:model="complexity = $event" />
 					</div>
+					<div class="row form-group px-3">
+						<ThemeInput
+							:theme="theme"
+							:themes="themes"
+							@update:model="themeSelected = $event"
+						/>
+					</div>
+				</div>
+				<div
+					class="col-lg-6 pr-lg-0 d-lg-block d-flex flex-column justify-content-center align-items-center mt-5"
+				>
+					<div class="row">
+						<DateFormInput
+							text="Data de Início"
+							@update:model="initialDate = $event"
+						/>
+					</div>
+					<div class="row mt-4">
+						<DateFormInput text="Data de Término" @update:model="finalDate = $event" />
+					</div>
+				</div>
+			</div>
+			<div class="row w-75" :class="loading ? 'mt-4' : 'mt-5'">
+				<div
+					v-if="loading"
+					class="col-12 d-flex justify-content-center align-items-center flex-column mb-4"
+				>
+					<b-spinner variant="success" label="Carregando..."></b-spinner>
+				</div>
+
+				<div class="col-12 d-flex flex-column justify-content-center align-items-center">
+					<button
+						type="submit"
+						class="btn submit-btn px-5"
+						:class="theme ? 'submit-btn-dark-theme' : 'submit-btn-light-theme'"
+						:disabled="!isFormValid"
+					>
+						Criar Atividade
+					</button>
 				</div>
 			</div>
 		</form>
@@ -166,6 +262,33 @@ $fifth-color: #18516f;
 		outline: transparent;
 		box-shadow: none;
 		border-color: $fourth-color;
+		color: $fourth-color;
+	}
+}
+
+.submit-btn {
+	border-radius: 0.6rem;
+	font-family: "Panton", sans-serif;
+	font-size: 1.2rem;
+	font-weight: 400;
+	transition: all 0.3s ease-in-out;
+}
+
+.submit-btn-light-theme {
+	background-color: $primary-color;
+	color: $fourth-color;
+
+	&:hover {
+		background-color: $fifth-color;
+	}
+}
+
+.submit-btn-dark-theme {
+	background-color: $fourth-color;
+	color: $primary-color;
+
+	&:hover {
+		background-color: $fifth-color;
 		color: $fourth-color;
 	}
 }

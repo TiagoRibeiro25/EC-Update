@@ -24,7 +24,7 @@ const options = isUserLogged
 	  ]
 	: null;
 
-const selected = ref("all");
+const selected = ref(options[0].value);
 </script>
 
 <template>

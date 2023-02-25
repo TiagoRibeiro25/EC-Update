@@ -22,7 +22,7 @@ const updateHighlightedBadge = (badge) => emit("updateHighlightedBadge", badge);
 			<div class="badges-info py-3 shadow">
 				<div class="row">
 					<div class="col-9 d-flex align-items-center">
-						<h2 class="ml-4 badges-info-title">Medalhas desbloqueadas</h2>
+						<h2 class="ml-4 pl-3 badges-info-title">Medalhas desbloqueadas</h2>
 					</div>
 					<div class="col-3 text-center pr-5">
 						<span class="percentage-info"> % de usuários com a medalha </span>
@@ -44,7 +44,7 @@ const updateHighlightedBadge = (badge) => emit("updateHighlightedBadge", badge);
 			<div class="badges-info py-3 shadow mt-xl-0 mt-5">
 				<div class="row">
 					<div class="col-9 d-flex align-items-center">
-						<h2 class="ml-4 badges-info-title">Medalhas bloqueadas</h2>
+						<h2 class="ml-4 pl-3 badges-info-title">Medalhas bloqueadas</h2>
 					</div>
 					<div class="col-3 text-center pr-5">
 						<span class="percentage-info"> % de usuários com a medalha </span>

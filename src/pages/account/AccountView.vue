@@ -23,7 +23,6 @@ const updateHighlightedBadge = (badge) => (highLightedBadge.value = badge);
 watch(
 	() => route.params.id,
 	(newId, oldId) => {
-		console.log(oldId, newId);
 		const loggedUserId = useUsersStore().getUserLogged().id;
 
 		if (oldId === loggedUserId && newId === "me") return;

@@ -3,6 +3,17 @@ import { ref } from "vue";
 import { fetchData } from "../hooks/fetchData";
 import { setLocalStorage } from "../hooks/localStorage";
 
+function convertName(name) {
+	// convert to lowercase, capitalize first letter and replace spaces with 1 space
+	return name
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "")
+		.toLowerCase()
+		.replace(/\b[a-z]/g, (letter) => letter.toUpperCase())
+		.replace(/\s+/g, " ")
+		.trim();
+}
+
 export const useThemesStore = defineStore("themes", () => {
 	const themes = ref([]);
 
@@ -20,14 +31,7 @@ export const useThemesStore = defineStore("themes", () => {
 	const getActiveThemes = () => themes.value.filter((theme) => theme.status === "active");
 
 	const addTheme = (newTheme) => {
-		// convert to lowercase, capitalize first letter and replace spaces with 1 space
-		newTheme = newTheme
-			.normalize("NFD")
-			.replace(/[\u0300-\u036f]/g, "")
-			.toLowerCase()
-			.replace(/\b[a-z]/g, (letter) => letter.toUpperCase())
-			.replace(/\s+/g, " ")
-			.trim();
+		newTheme = convertName(newTheme);
 
 		// Check if theme already exists
 		const themeExists = themes.value.find((theme) => theme.name === newTheme);

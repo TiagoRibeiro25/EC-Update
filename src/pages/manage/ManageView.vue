@@ -1,6 +1,7 @@
 <script setup>
 import Header from "@/components/Header.vue";
 import FastActions from "@/components/Manage/FastActions.vue";
+import Themes from "@/components/Manage/Themes/Themes.vue";
 import { useUsersStore } from "@/stores/users";
 import { ref, onBeforeMount } from "vue";
 
@@ -27,6 +28,7 @@ onBeforeMount(() => {
 		<div v-if="loaded" class="content mx-auto">
 			<Header title="GESTÃO" :theme="theme" />
 			<FastActions :theme="theme" />
+			<Themes :theme="theme" />
 		</div>
 		<div
 			v-else

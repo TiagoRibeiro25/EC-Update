@@ -12,7 +12,7 @@ const description = props.description;
 
 <template>
 	<div
-		class="row header w-100 mx-auto text-center mt-2 pt-4 pb-2"
+		class="row header w-100 mx-auto text-center mt-2 pt-4 pb-2 shadow"
 		:class="theme ? 'header-dark-theme' : 'header-light-theme'"
 	>
 		<div class="col-12 text-center">

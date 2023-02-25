@@ -1,6 +1,5 @@
 <script setup>
 import { useActivitiesStore } from "@/stores/activities";
-import { useUsersStore } from "@/stores/users";
 import NoActivities from "@/components/Home/Activities/NoActivities.vue";
 import Activities from "@/components/Home/Activities/Activities.vue";
 

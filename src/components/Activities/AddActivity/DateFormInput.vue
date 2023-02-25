@@ -1,5 +1,5 @@
 <script setup>
-import { convertDateToNumber, convertDateToString } from "@/hooks/convertDate.js";
+import { convertDateToNumber } from "@/hooks/convertDate.js";
 import { ref, watch } from "vue";
 
 const emit = defineEmits(["update:model"]);

@@ -4,7 +4,7 @@ import Seeds from "@/components/Account/Seeds.vue";
 import Badges from "@/components/Account/Badges/Badges.vue";
 import { useUsersStore } from "@/stores/users";
 import { useBadgesStore } from "@/stores/badges";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
@@ -19,6 +19,24 @@ const highLightedBadge = ref(
 );
 
 const updateHighlightedBadge = (badge) => (highLightedBadge.value = badge);
+
+watch(
+	() => route.params.id,
+	(newId, oldId) => {
+		console.log(oldId, newId);
+		const loggedUserId = useUsersStore().getUserLogged().id;
+
+		if (oldId === loggedUserId && newId === "me") return;
+		else if (newId === "me") {
+			isLoaded.value = false;
+			user.value = useUsersStore().getUserById(loggedUserId);
+
+			setTimeout(() => {
+				isLoaded.value = true;
+			}, 300);
+		}
+	}
+);
 
 // Validate the user id
 onBeforeMount(() => {

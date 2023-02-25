@@ -12,7 +12,7 @@ const disable = props.disable;
 </script>
 
 <template>
-	<div style="width: 190px">
+	<div style="width: 220px">
 		<router-link
 			:to="{ name: disable ? '' : type }"
 			class="text-decoration-none add-new-btn btn btn-sm rounded-pill d-flex align-items-center justify-content-start"

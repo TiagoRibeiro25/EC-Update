@@ -22,7 +22,7 @@ const options = isUserLogged
 			{ value: "all", text: "Todas as atividades" },
 			{ value: userSchool.id, text: `Atividades da ${userSchool.name}` },
 	  ]
-	: null;
+	: [{ value: "all", text: "Todas as atividades" }];
 
 const selected = ref(options[0].value);
 </script>
@@ -51,7 +51,6 @@ const selected = ref(options[0].value);
 					text="Adicionar Atividade"
 				/>
 			</div>
-			<!-- if !isVerifiedUser align to the left -->
 			<div
 				v-if="isUserLogged"
 				class="col-3 px-0 mb-2 d-flex justify-content-end align-items-center"

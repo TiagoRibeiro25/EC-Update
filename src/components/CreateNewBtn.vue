@@ -3,21 +3,28 @@ const props = defineProps({
 	theme: { type: Boolean, required: true },
 	text: { type: String, required: true },
 	type: { type: String, required: true },
+	disable: { type: Boolean, required: false, default: false },
 });
 const theme = props.theme;
 const text = props.text;
 const type = props.type;
+const disable = props.disable;
 </script>
 
 <template>
-	<div style="width: 187px">
+	<div style="width: 190px">
 		<router-link
-			:to="{ name: type }"
+			:to="{ name: disable ? '' : type }"
 			class="text-decoration-none add-new-btn btn btn-sm rounded-pill d-flex align-items-center justify-content-start"
-			:class="{ 'btn-light': !theme, 'btn-dark': theme }"
+			:class="{ 'btn-light': !theme, 'btn-dark': theme, disabled: disable }"
 		>
-			<img src="@/assets/icons/add.svg" alt="add" width="20" />
-			<span class="px-3"> {{ text }} </span>
+			<img
+				v-if="type !== 'AdminMenu'"
+				src="@/assets/icons/add.svg"
+				alt="add"
+				width="20"
+			/>
+			<span class="px-3 w-100"> {{ text }} </span>
 		</router-link>
 	</div>
 </template>
@@ -31,6 +38,11 @@ $tertiary-color: #18516f;
 	font-family: "Panton", sans-serif;
 	font-weight: 600;
 	font-size: 14px;
+}
+
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
 }
 
 .btn-light {

@@ -1,5 +1,5 @@
 <script setup>
-import ImgSlider from "@/components/News/NewDetails/ImgSlider.vue";
+import ImgSlider from "@/components/ImgSlider.vue";
 import NewBody from "@/components/News/NewDetails/NewBody.vue";
 
 const props = defineProps({

@@ -19,6 +19,31 @@ export const useMeetingsStore = defineStore("meetings", () => {
 		return meetings.value.find((meeting) => meeting.id === meetingId);
 	};
 
+	const getFilteredMeetings = (schoolID, filter = "past") => {
+		const currentDate = Date.now();
+		let filteredMeetings = [];
+
+		if (filter === "past") {
+			filteredMeetings = meetings.value.filter((meeting) => {
+				return meeting.date < currentDate;
+			});
+			filteredMeetings.sort((a, b) => new Date(b.date) - new Date(a.date));
+		} else if (filter === "future") {
+			filteredMeetings = meetings.value.filter((meeting) => {
+				return meeting.date > currentDate;
+			});
+			filteredMeetings.sort((a, b) => new Date(a.date) - new Date(b.date));
+		}
+
+		// filter by schoolId
+		filteredMeetings = filteredMeetings.filter((meeting) => {
+			return meeting.schoolId === schoolID;
+		});
+
+		// order by date
+		return filteredMeetings;
+	};
+
 	//* Actions
 	const addNewMeeting = (newMeeting) => {
 		newMeeting.id = (
@@ -42,6 +67,7 @@ export const useMeetingsStore = defineStore("meetings", () => {
 	return {
 		getMeetings,
 		getMeetingById,
+		getFilteredMeetings,
 		addNewMeeting,
 		addAta,
 		removeMeetingsBySchool,

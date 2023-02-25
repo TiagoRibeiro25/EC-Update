@@ -7,12 +7,14 @@ const images = ref(props.images);
 const addNewImg = () => {
 	const input = document.createElement("input");
 	input.type = "file";
-	input.accept = "image/*";
+	input.accept = "image/jpg, image/jpeg, image/png";
 	input.onchange = (e) => {
 		const file = e.target.files[0];
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onload = () => {
+			if (!/data:image\/(jpeg|png)/.test(reader.result)) return;
+
 			images.value.push(reader.result);
 		};
 	};

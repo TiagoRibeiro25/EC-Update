@@ -22,8 +22,8 @@ watchEffect(() => {
 		@mouseenter="isHovered = true"
 		@mouseleave="isHovered = false"
 	>
-		<b-badge variant="success" class="mr-2">Beta</b-badge>
-		<span>
+		<b-badge variant="success">Beta</b-badge>
+		<span class="ml-3">
 			Versão de testes do Ecoly -
 			<b-link
 				:class="theme ? 'github-repo-dark-theme' : 'github-repo-light-theme'"
@@ -40,7 +40,7 @@ watchEffect(() => {
 .beta-popup {
 	position: fixed;
 	bottom: 0;
-	right: 1%;
+	right: 0;
 	border-top-left-radius: 10px;
 	z-index: 1000;
 	font-family: "Panton", sans-serif;
@@ -51,11 +51,11 @@ watchEffect(() => {
 }
 
 .beta-popup-hovered {
-	transform: translateX(15px);
+	transform: translateX(0);
 }
 
 .beta-popup-not-hovered {
-	transform: translateX(340px);
+	transform: translateX(325px);
 }
 
 .beta-popup-light-theme {

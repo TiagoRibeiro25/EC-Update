@@ -4,6 +4,7 @@ import FastActions from "@/components/Manage/FastActions.vue";
 import Themes from "@/components/Manage/Themes/Themes.vue";
 import ContactMembers from "@/components/Manage/ContactMembers/ContactMembers.vue";
 import Meetings from "@/components/Manage/Meetings/Meetings.vue";
+import ActivitiesReports from "@/components/Manage/ActivitiesReports/ActivitiesReports.vue";
 import { useUsersStore } from "@/stores/users";
 import { ref, onBeforeMount } from "vue";
 
@@ -33,6 +34,7 @@ onBeforeMount(() => {
 			<Themes :theme="theme" />
 			<ContactMembers :theme="theme" />
 			<Meetings :theme="theme" />
+			<ActivitiesReports :theme="theme" />
 		</div>
 		<div
 			v-else

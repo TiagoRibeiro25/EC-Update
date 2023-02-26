@@ -3,7 +3,6 @@ import { ref, watchEffect } from "vue";
 import { useUsersStore } from "@/stores/users";
 
 const theme = ref();
-const isHovered = ref(false);
 
 watchEffect(() => {
 	theme.value = useUsersStore().isDarkMode();
@@ -13,17 +12,10 @@ watchEffect(() => {
 <template>
 	<div
 		class="beta-popup py-2 px-3"
-		:class="{
-			'beta-popup-hovered': isHovered,
-			'beta-popup-not-hovered': !isHovered,
-			'beta-popup-light-theme': !theme,
-			'beta-popup-dark-theme': theme,
-		}"
-		@mouseenter="isHovered = true"
-		@mouseleave="isHovered = false"
+		:class="theme ? 'beta-popup-dark-theme' : 'beta-popup-light-theme'"
 	>
-		<b-badge variant="success">Beta</b-badge>
-		<span class="ml-3">
+		<b-badge variant="success" class="mr-2">Beta</b-badge>
+		<span>
 			Versão de testes do Ecoly -
 			<b-link
 				:class="theme ? 'github-repo-dark-theme' : 'github-repo-light-theme'"
@@ -48,14 +40,6 @@ watchEffect(() => {
 	font-weight: 600;
 	cursor: default;
 	transition: transform 0.5s ease-in-out;
-}
-
-.beta-popup-hovered {
-	transform: translateX(0);
-}
-
-.beta-popup-not-hovered {
-	transform: translateX(325px);
 }
 
 .beta-popup-light-theme {

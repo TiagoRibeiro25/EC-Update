@@ -1,4 +1,5 @@
 <script setup>
+import CreateItemImgs from "@/components/CreateItemImgs.vue";
 import { useActivitiesStore } from "@/stores/activities";
 import { ref } from "vue";
 
@@ -10,11 +11,27 @@ const props = defineProps({
 const theme = props.theme;
 const activityId = props.activityId;
 const modalId = `modal-${crypto.randomUUID()}`;
+const images = ref([]);
+const description = ref("");
 const finishing = ref(false);
+
+const verifyDescription = () => {
+	const regex = /[a-zA-Z]/;
+	return regex.test(description.value);
+};
+
+const verifyForm = () => {
+	if (images.value.length === 0) return false;
+	return verifyDescription();
+};
 
 const finishActivity = () => {
 	finishing.value = true;
+	const report = { description: description.value, images: images.value };
+
+	useActivitiesStore().addReport(activityId, report);
 	useActivitiesStore().finishActivity(activityId);
+
 	setTimeout(() => {
 		window.location.reload();
 	}, 500);
@@ -40,6 +57,16 @@ const finishActivity = () => {
 				Tens a certeza que queres finalizar esta atividade?
 			</h4>
 
+			<CreateItemImgs :images="images" />
+
+			<div class="mt-3 w-100 mx-auto">
+				<b-form-textarea
+					class="activity-report-description"
+					v-model="description"
+					placeholder="Relatório da atividade..."
+				></b-form-textarea>
+			</div>
+
 			<div v-if="finishing" class="w-100 text-center mt-3">
 				<b-spinner variant="success" label="Carregando..."></b-spinner>
 			</div>
@@ -48,7 +75,7 @@ const finishActivity = () => {
 				<b-button
 					type="submit"
 					class="btn btn-block modal-finish-btn w-50 mx-auto"
-					:disabled="finishing"
+					:disabled="finishing || !verifyForm()"
 					@click="finishActivity"
 				>
 					Finalizar
@@ -62,11 +89,28 @@ const finishActivity = () => {
 $primary-color: #343e3d;
 $secondary-color: #ffffff;
 $tertiary-color: #18516f;
+$fourth-color: #aedcc0;
 
 .finish-btn {
 	font-family: "Panton", sans-serif;
 	font-weight: 600;
 	font-size: 14px;
+}
+
+.activity-report-description {
+	font-family: "Panton", sans-serif;
+	font-weight: 600;
+	font-size: 1.3rem;
+	height: 350px;
+	resize: none;
+	border: 2px solid $fourth-color;
+	border-radius: 0.6rem;
+
+	&:focus {
+		outline: transparent;
+		box-shadow: none;
+		border-color: $tertiary-color;
+	}
 }
 
 .dark-theme-btn {

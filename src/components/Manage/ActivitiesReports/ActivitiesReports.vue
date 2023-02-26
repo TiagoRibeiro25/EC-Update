@@ -1,5 +1,7 @@
 <script setup>
 import Header from "@/components/Manage/Header.vue";
+import Activities from "@/components/Manage/ActivitiesReports/Activities.vue";
+import NoActivities from "@/components/Manage/ActivitiesReports/NoActivities.vue";
 import { useActivitiesStore } from "@/stores/activities";
 import { useUsersStore } from "@/stores/users";
 
@@ -9,8 +11,6 @@ const theme = props.theme;
 const userLogged = useUsersStore().getUserLogged();
 
 const activities = useActivitiesStore().getFinishedActivities(false, userLogged.schoolId);
-
-console.log(activities);
 </script>
 
 <template>
@@ -21,7 +21,10 @@ console.log(activities);
 			:theme="theme"
 		/>
 
-		<div class="row w-100 mt-5 mx-auto" style="border: 1px solid red"></div>
+		<div class="row w-100 mt-5 mx-auto">
+			<Activities v-if="activities.length > 0" :activities="activities" :theme="theme" />
+			<NoActivities v-else :theme="theme" />
+		</div>
 	</div>
 </template>
 

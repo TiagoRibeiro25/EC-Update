@@ -17,7 +17,7 @@ function convertName(name) {
 export const useThemesStore = defineStore("themes", () => {
 	const themes = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchThemes() {
 		const data = await fetchData("themes");
 		themes.value = data;

@@ -9,7 +9,7 @@ import { setLocalStorage } from "../hooks/localStorage";
 export const useSchoolsStore = defineStore("schools", () => {
 	const schools = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchSchools() {
 		const data = await fetchData("schools");
 		schools.value = data;

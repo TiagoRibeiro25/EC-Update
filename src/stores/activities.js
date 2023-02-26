@@ -21,7 +21,7 @@ function orderActivitiesFromNewest(activities) {
 export const useActivitiesStore = defineStore("activities", () => {
 	const activities = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchActivities() {
 		const data = await fetchData("activities");
 		activities.value = data;

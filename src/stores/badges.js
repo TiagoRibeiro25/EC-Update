@@ -6,7 +6,7 @@ import { fetchData } from "../hooks/fetchData";
 export const useBadgesStore = defineStore("badges", () => {
 	const badges = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchBadges() {
 		const data = await fetchData("badges");
 		badges.value = data;

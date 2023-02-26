@@ -12,7 +12,7 @@ function orderNewsByDate(news) {
 export const useNewsStore = defineStore("news", () => {
 	const news = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchNews() {
 		const data = await fetchData("news");
 		news.value = data;

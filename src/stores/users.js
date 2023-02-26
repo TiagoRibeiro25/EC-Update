@@ -14,7 +14,7 @@ export const useUsersStore = defineStore("users", () => {
 	const loggedUserId = ref(getLocalStorage("loggedUser") || null);
 	const darkMode = ref(getLocalStorage("darkMode") || doesUserWantDarkMode());
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchAllData() {
 		const usersData = await fetchData("users");
 		const rolesData = await fetchData("roles");

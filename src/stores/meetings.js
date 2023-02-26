@@ -6,7 +6,7 @@ import { setLocalStorage } from "../hooks/localStorage";
 export const useMeetingsStore = defineStore("meetings", () => {
 	const meetings = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchMeetings() {
 		const data = await fetchData("meetings");
 		meetings.value = data;

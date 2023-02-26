@@ -5,7 +5,7 @@ import { fetchData } from "../hooks/fetchData";
 export const useSeedsStore = defineStore("seeds", () => {
 	const seeds = ref([]);
 
-	// //* Fetch data
+	//* Fetch data
 	async function fetchSeeds() {
 		const data = await fetchData("seeds");
 		seeds.value = data;

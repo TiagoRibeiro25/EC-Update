@@ -16,7 +16,7 @@ const modalId = `modal-${crypto.randomUUID()}`;
 <template>
 	<div class="mb-3 text-center">
 		<span
-			class="meeting-date py-1 px-xl-4 px-5 rounded shadow-sm mr-5"
+			class="meeting-date py-1 rounded shadow-sm mr-5 d-inline-block"
 			:class="theme ? 'meeting-date-dark-theme' : 'meeting-date-light-theme'"
 		>
 			{{ convertDateToString(meeting.date) }}
@@ -57,6 +57,7 @@ $fifth-color: #aedcc0;
 	font-family: "Panton", sans-serif;
 	font-size: 1.1rem;
 	font-weight: 500;
+	width: 8rem;
 }
 
 .meeting-btn {

@@ -40,23 +40,22 @@ watchEffect(() => {
 .beta-popup {
 	position: fixed;
 	bottom: 0;
-	right: 0;
+	right: 1%;
 	border-top-left-radius: 10px;
 	z-index: 1000;
 	font-family: "Panton", sans-serif;
 	font-size: 1.1rem;
 	font-weight: 600;
 	cursor: default;
-	transform: translateX(325px);
 	transition: transform 0.5s ease-in-out;
 }
 
 .beta-popup-hovered {
-	transform: translateX(0);
+	transform: translateX(15px);
 }
 
 .beta-popup-not-hovered {
-	transform: translateX(325px);
+	transform: translateX(340px);
 }
 
 .beta-popup-light-theme {

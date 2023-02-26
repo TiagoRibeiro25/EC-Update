@@ -1,12 +1,17 @@
 <script setup>
-import { useActivitiesStore } from "@/stores/activities";
 import NoActivities from "@/components/Home/Activities/NoActivities.vue";
 import Activities from "@/components/Home/Activities/Activities.vue";
+import { useActivitiesStore } from "@/stores/activities";
+import { useUsersStore } from "@/stores/users";
 
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = props.theme;
+const isUserLogged = useUsersStore().isUserLogged();
+const userLogged = isUserLogged ? useUsersStore().getUserLogged() : null;
 
-const activities = useActivitiesStore().getUnfinishedActivities(true);
+const activities = userLogged
+	? useActivitiesStore().getUnfinishedActivities(false, userLogged.schoolId)
+	: useActivitiesStore().getUnfinishedActivities();
 </script>
 
 <template>

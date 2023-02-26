@@ -19,7 +19,9 @@ const meetingCreator = useUsersStore().getUserById(meeting.creatorId);
 	<b-modal :id="modalId" size="lg" hide-footer>
 		<div class="container">
 			<div class="text-center">
-				<h2>Informações da Reunião de {{ convertDateToString(meeting.date) }}</h2>
+				<h2>
+					Informações da Reunião de <b>{{ convertDateToString(meeting.date) }}</b>
+				</h2>
 				<h3 class="mt-3">
 					Reunião criada por <b>{{ meetingCreator.name }}</b>
 				</h3>

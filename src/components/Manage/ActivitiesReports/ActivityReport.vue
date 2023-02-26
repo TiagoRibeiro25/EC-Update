@@ -1,7 +1,8 @@
 <script setup>
+import ActivityTheme from "@/components/Activities/ActivityTheme.vue";
 import ImgSlider from "@/components/ImgSlider.vue";
 import ActivityReportInfo from "@/components/Manage/ActivitiesReports/ActivityReportInfo.vue";
-import ActivityTheme from "@/components/Activities/ActivityTheme.vue";
+import ActivityReportModal from "@/components/Manage/ActivitiesReports/ActivityReportModal.vue";
 import { useActivitiesStore } from "@/stores/activities";
 import { ref, watchEffect } from "vue";
 
@@ -12,6 +13,7 @@ const props = defineProps({
 
 const theme = props.theme;
 const activity = ref();
+const modalId = `modal-${crypto.randomUUID()}`;
 
 watchEffect(() => {
 	activity.value = useActivitiesStore().getActivityById(props.activityId);
@@ -22,7 +24,7 @@ watchEffect(() => {
 	<div>
 		<div class="row mx-auto pt-4">
 			<h2
-				class="activity-title"
+				class="activity-title w-100"
 				:class="theme ? 'activity-title-dark-theme' : 'activity-title-light-theme'"
 			>
 				{{ activity.title }}
@@ -43,6 +45,7 @@ watchEffect(() => {
 				type="button"
 				class="btn see-report-btn py-1"
 				:class="theme ? 'see-report-btn-dark-theme' : 'see-report-btn-light-theme'"
+				@click="$bvModal.show(modalId)"
 			>
 				Ver Relatório
 			</button>
@@ -51,6 +54,8 @@ watchEffect(() => {
 			<ActivityReportInfo :activity="activity" :theme="theme" />
 		</div>
 	</div>
+
+	<ActivityReportModal :report="activity.report" :modalId="modalId" />
 </template>
 
 <style lang="scss" scoped>

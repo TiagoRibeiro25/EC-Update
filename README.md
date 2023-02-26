@@ -2,7 +2,7 @@
 
 TODO:
 
-- [ ] Add modal to see Activity Report
-- [ ] Admin Menu
-- [ ] Activity Details
-- [ ] Dashboard
+-  [x] Add modal to see Activity Report
+-  [ ] Admin Menu
+-  [ ] Activity Details
+-  [ ] Dashboard

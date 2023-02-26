@@ -1,4 +1,6 @@
 <script setup>
+import SideBar from "@/components/SideBar.vue";
+import BetaPopup from "@/components/BetaPopup.vue";
 import { RouterView } from "vue-router";
 import { ref, onBeforeMount } from "vue";
 import {
@@ -11,7 +13,6 @@ import {
 	loadThemesData,
 	loadSeedsData,
 } from "@/hooks/loadData.js";
-import SideBar from "@/components/SideBar.vue";
 import { useUsersStore } from "@/stores/users";
 
 const dataLoaded = ref(false);
@@ -113,6 +114,8 @@ onBeforeMount(async () => {
 			{{ loadingMessage }}
 		</span>
 	</div>
+
+	<BetaPopup :theme="theme" />
 </template>
 
 <style lang="scss" scoped>

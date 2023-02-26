@@ -14,15 +14,10 @@ const search = ref("");
 const data = ref([]);
 const showModal = ref(false);
 
-const searchNews = computed(() => {
-	const news = useNewsStore().searchNews(search.value);
-	data.value = [...data.value, ...news];
-});
+const types = ["notícia", "atividade"];
 
-const searchActivities = computed(() => {
-	const activities = useActivitiesStore().searchActivities(search.value);
-	data.value = [...data.value, ...activities];
-});
+const searchNews = computed(() => useNewsStore().searchNews(search.value));
+const searchActivities = computed(() => useActivitiesStore().searchActivities(search.value));
 
 watch(search, async () => {
 	// if the search input has less than 3 characters, don't search
@@ -32,8 +27,16 @@ watch(search, async () => {
 	}
 
 	data.value = [];
-	if (currentPage === "News" || currentPage === "Home") searchNews.value;
-	if (currentPage === "Activities" || currentPage === "Home") searchActivities.value;
+
+	if (currentPage === "News" || currentPage === "Home") {
+		const news = searchNews.value;
+		data.value = [...data.value, ...news];
+	}
+
+	if (currentPage === "Activities" || currentPage === "Home") {
+		const activities = searchActivities.value;
+		data.value = [...data.value, ...activities];
+	}
 
 	showModal.value = data.value.length === 0 ? false : true;
 });
@@ -80,7 +83,7 @@ watch(search, async () => {
 				</div>
 				<div class="col-3">
 					<span>
-						{{ item.type }}
+						{{ item.type === "new" ? types[0] : types[1] }}
 					</span>
 				</div>
 			</div>

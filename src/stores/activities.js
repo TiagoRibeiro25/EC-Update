@@ -4,6 +4,20 @@ import { convertDateToString } from "../hooks/convertDate";
 import { fetchData } from "../hooks/fetchData";
 import { setLocalStorage } from "../hooks/localStorage";
 
+function filterActivitiesFromCurrentYear(activities) {
+	const currentYear = new Date().getFullYear();
+	return activities.filter((activity) => {
+		const activityYear = convertDateToString(activity.finalDate).split("-")[2];
+		return activityYear === currentYear.toString();
+	});
+}
+
+function orderActivitiesFromNewest(activities) {
+	return activities.sort((a, b) => {
+		return new Date(b.finalDate) - new Date(a.finalDate);
+	});
+}
+
 export const useActivitiesStore = defineStore("activities", () => {
 	const activities = ref([]);
 
@@ -36,20 +50,24 @@ export const useActivitiesStore = defineStore("activities", () => {
 
 		if (!filterByYear) return result;
 
-		// keep activities from current year
-		const currentYear = new Date().getFullYear();
-		result = result.filter((activity) => {
-			const activityYear = [
-				convertDateToString(activity.initialDate).split("-")[2],
-				convertDateToString(activity.finalDate).split("-")[2],
-			];
-			return (
-				activityYear[0] === currentYear.toString() ||
-				activityYear[1] === currentYear.toString()
-			);
-		});
+		result = filterActivitiesFromCurrentYear(result);
+		return orderActivitiesFromNewest(result);
+	};
 
-		return result;
+	const getFinishedActivities = (filterByYear = false, schoolID = null) => {
+		let result = [];
+		if (schoolID === null) {
+			result = activities.value.filter((activity) => activity.status === "finished");
+		} else {
+			result = activities.value.filter(
+				(activity) => activity.status === "finished" && activity.schoolId === schoolID
+			);
+		}
+
+		if (!filterByYear) return result;
+
+		result = filterActivitiesFromCurrentYear(result);
+		return orderActivitiesFromNewest(result);
 	};
 
 	const getActivityById = (activityId) => {
@@ -109,6 +127,7 @@ export const useActivitiesStore = defineStore("activities", () => {
 		getActivities,
 		getActivitiesFromCurrentYear,
 		getUnfinishedActivities,
+		getFinishedActivities,
 		getActivityById,
 		searchActivities,
 		addActivity,

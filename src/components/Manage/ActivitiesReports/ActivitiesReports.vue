@@ -27,5 +27,3 @@ const activities = useActivitiesStore().getFinishedActivities(false, userLogged.
 		</div>
 	</div>
 </template>
-
-<style lang="scss" scoped></style>

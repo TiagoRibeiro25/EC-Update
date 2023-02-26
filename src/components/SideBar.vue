@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useUsersStore } from "@/stores/users";
 const userStore = useUsersStore();
 
@@ -49,7 +49,7 @@ function close() {
 
 function signOut() {
 	userStore.signOut();
-	useRouter().push({ name: "Home" });
+	window.location.reload();
 }
 </script>
 

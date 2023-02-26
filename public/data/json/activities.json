@@ -73,7 +73,7 @@
 		"id": "4",
 		"images": ["./data/images/Activities/bancos.png"],
 		"initialDate": 1670973744743,
-		"meta": "Construir 4 bancos de jardim",
+		"meta": "Construir 4 bancos de jardim 1",
 		"objective": "Construir bancos de jardim para que os alunos possam descansar e usufruir do espaço exterior da escola",
 		"participants": "Alunos do 9º ano da Escola Secundária de Vila Nova de Gaia",
 		"report": {
@@ -99,7 +99,7 @@
 		"id": "5",
 		"images": ["./data/images/Activities/bancos.png"],
 		"initialDate": 1670973744743,
-		"meta": "Construir 4 bancos de jardim",
+		"meta": "Construir 4 bancos de jardim 2",
 		"objective": "Construir bancos de jardim para que os alunos possam descansar e usufruir do espaço exterior da escola",
 		"participants": "Alunos do 9º ano da Escola Secundária de Vila Nova de Gaia",
 		"report": {

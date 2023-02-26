@@ -1,5 +1,6 @@
 <script setup>
 import PastMeeting from "@/components/Manage/Meetings/PastMeeting.vue";
+import FutureMeeting from "@/components/Manage/Meetings/FutureMeeting.vue";
 import { useMeetingsStore } from "@/stores/meetings";
 import { useUsersStore } from "@/stores/users";
 import { ref, watchEffect } from "vue";
@@ -69,7 +70,14 @@ watchEffect(() => {
 						:theme="theme"
 					/>
 				</div>
-				<div v-else></div>
+				<div v-else>
+					<FutureMeeting
+						v-for="meeting in futureMeetings"
+						:key="meeting.id"
+						:meeting="meeting"
+						:theme="theme"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>

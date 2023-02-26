@@ -35,7 +35,7 @@ const selected = ref(options[0].value);
 	>
 		<div class="row">
 			<div class="col-9 d-flex align-items-center mt-4 pt-2">
-				<SearchBar :theme="theme" page="News" />
+				<SearchBar :theme="theme" page="Activities" />
 			</div>
 		</div>
 		<div class="row">

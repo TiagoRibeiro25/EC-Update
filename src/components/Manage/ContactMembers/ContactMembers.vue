@@ -84,7 +84,7 @@ $fifth-color: #aedcc0;
 	color: $tertiary-color;
 
 	&:hover {
-		background-color: $fifth-color;
+		background-color: $fourth-color;
 		color: $tertiary-color;
 	}
 }

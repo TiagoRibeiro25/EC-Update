@@ -41,7 +41,7 @@ $tertiary-color: #aedcc0;
 
 .content-container {
 	height: 150px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .title {

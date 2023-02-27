@@ -36,10 +36,10 @@ const changeOption = (index) => {
 			class="menu-container w-100 shadow"
 			:class="theme ? 'menu-container-dark-theme' : 'menu-container-light-theme'"
 		>
-			<UsersMenu v-if="options[0].active" />
-			<SchoolsMenu v-if="options[1].active" />
-			<ActivitiesMenu v-if="options[2].active" />
-			<MeetingsMenu v-if="options[3].active" />
+			<UsersMenu v-if="options[0].active" :theme="theme" />
+			<SchoolsMenu v-if="options[1].active" :theme="theme" />
+			<ActivitiesMenu v-if="options[2].active" :theme="theme" />
+			<MeetingsMenu v-if="options[3].active" :theme="theme" />
 		</div>
 	</div>
 </template>

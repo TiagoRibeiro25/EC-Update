@@ -1,6 +1,7 @@
 <script setup>
 import ImgSlider from "@/components/ImgSlider.vue";
 import ActivityHeader from "@/components/Activities/ActivityDetails/ActivityHeader.vue";
+import ActivityBody from "@/components/Activities/ActivityDetails/ActivityBody.vue";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
@@ -15,5 +16,6 @@ const activity = props.activity;
 	<div class="mt-3 mx-1">
 		<ImgSlider :images="activity.images" />
 		<ActivityHeader :activity="activity" :theme="theme" />
+		<ActivityBody :activity="activity" :theme="theme" />
 	</div>
 </template>

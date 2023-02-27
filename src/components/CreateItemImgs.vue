@@ -30,7 +30,7 @@ const removeImg = (index) => images.value.splice(index, 1);
 			v-for="(image, index) in images"
 			:key="index"
 			:src="image"
-			alt="Imagem da notícia"
+			alt="Imagem adicionada"
 			class="addNewImg img-fluid my-3 mx-3 rounded-lg shadow-sm"
 			@click="removeImg(index)"
 		/>
@@ -39,7 +39,7 @@ const removeImg = (index) => images.value.splice(index, 1);
 			v-if="images.length < 4"
 			class="addNewImg addImgBtn my-3 mx-3 rounded-lg shadow"
 			src="@/assets/images/addImage.png"
-			alt="Adicionar imagem da notícia"
+			alt="Adicionar imagem"
 			@click="addNewImg"
 		/>
 	</div>

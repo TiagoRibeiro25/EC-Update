@@ -13,6 +13,13 @@ const props = defineProps({
 const theme = props.theme;
 const activity = props.activity;
 const author = useUsersStore().getUserById(activity.creatorId);
+
+const isUserLogged = useUsersStore().isUserLogged();
+const userLogged = isUserLogged ? useUsersStore().getUserLogged() : null;
+
+const isUserVerified = userLogged
+	? userLogged.schoolId === activity.schoolId && userLogged.role !== "unsigned"
+	: false;
 </script>
 
 <template>
@@ -40,7 +47,7 @@ const author = useUsersStore().getUserById(activity.creatorId);
 			<div class="col-3">
 				<ActivityTheme :activityTheme="activity.themeId" />
 			</div>
-			<div class="col-3">
+			<div class="col-5">
 				<div class="row text-center">
 					<span
 						class="date-info"
@@ -51,7 +58,7 @@ const author = useUsersStore().getUserById(activity.creatorId);
 					</span>
 				</div>
 			</div>
-			<div class="col-6 text-right">
+			<div class="col-4 text-right">
 				<span>
 					<b
 						class="creator-info mr-2"
@@ -68,8 +75,8 @@ const author = useUsersStore().getUserById(activity.creatorId);
 				</span>
 			</div>
 		</div>
-		<div class="row mt-1">
-			<div class="col-12">
+		<div class="row" :class="isUserVerified ? 'mt-1' : 'mt-4'">
+			<div v-if="isUserVerified" class="col-12">
 				<ActivityFinishBtn :theme="theme" :activityId="activity.id" />
 				<DeleteBtn :theme="theme" :itemId="activity.id" type="activities" />
 			</div>

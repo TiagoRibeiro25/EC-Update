@@ -41,7 +41,7 @@ watchEffect(() => {
 					}"
 					@click="changeOption(0)"
 				>
-					Realizadas
+					{{ options[0].name }}
 				</span>
 			</div>
 			<div>
@@ -53,7 +53,7 @@ watchEffect(() => {
 						'option-light-theme': !theme,
 					}"
 					@click="changeOption(1)"
-					>Futuras</span
+					>{{ options[1].name }}</span
 				>
 			</div>
 		</div>

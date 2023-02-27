@@ -4,5 +4,5 @@ TODO:
 
 -  [x] Add modal to see Activity Report
 -  [ ] Admin Menu
--  [ ] Activity Details
+-  [x] Activity Details
 -  [ ] Dashboard

@@ -4,15 +4,17 @@ import { useNewsStore } from "@/stores/news";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-function doesUserWantDarkMode() {
-	return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+function loadDarkModeSetting() {
+	return getLocalStorage("darkMode") === null
+		? !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+		: getLocalStorage("darkMode");
 }
 
 export const useUsersStore = defineStore("users", () => {
 	const users = ref([]);
 	const roles = ref([]);
 	const loggedUserId = ref(getLocalStorage("loggedUser") || null);
-	const darkMode = ref(getLocalStorage("darkMode") || doesUserWantDarkMode());
+	const darkMode = ref(loadDarkModeSetting());
 
 	//* Fetch data
 	async function fetchAllData() {

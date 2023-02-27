@@ -12,7 +12,7 @@ const theme = props.theme;
 </script>
 
 <template>
-	<div class="mt-3 mx-5">
+	<div class="mt-3 mx-1">
 		<ImgSlider :images="newItem.images" />
 		<NewBody :newItem="newItem" :theme="theme" />
 	</div>

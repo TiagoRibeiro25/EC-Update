@@ -31,7 +31,7 @@ const changeSelected = (id) => {
 					:disabled="activity.id === activitySelected"
 					@click="changeSelected(activity.id)"
 				>
-					{{ activity.meta }}
+					{{ activity.title }}
 				</button>
 			</div>
 			<div class="col-3 d-flex flex-column justify-content-center align-items-center">

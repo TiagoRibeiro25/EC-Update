@@ -2,13 +2,16 @@
 import { useNewsStore } from "@/stores/news";
 import { useActivitiesStore } from "@/stores/activities";
 import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
-	itemId: { type: Number, required: true },
+	itemId: { type: String, required: true },
 	type: { type: String, required: true }, // "news" or "activities"
 });
 
+const route = useRoute();
+const router = useRouter();
 const theme = props.theme;
 const type = props.type;
 const itemId = props.itemId;
@@ -22,7 +25,11 @@ const deleteItem = () => {
 	else useActivitiesStore().removeActivity(itemId);
 
 	setTimeout(() => {
-		window.location.reload();
+		if (route.name === "News" || route.name === "Activities") router.go(0);
+		else {
+			if (type === "news") router.push({ name: "News" });
+			else router.push({ name: "Activities" });
+		}
 	}, 500);
 };
 </script>
@@ -32,7 +39,11 @@ const deleteItem = () => {
 		<button
 			type="button"
 			class="remove-btn btn btn-sm rounded-pill px-3 float-right mt-2"
-			:class="!theme ? 'light-theme-btn' : 'dark-theme-btn'"
+			:class="{
+				'light-theme-btn': !theme,
+				'dark-theme-btn': theme,
+				'mr-3': route.name !== 'News' && route.name !== 'Activities',
+			}"
 			@click="$bvModal.show(modalId)"
 		>
 			<img

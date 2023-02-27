@@ -56,7 +56,7 @@ watch(search, async () => {
 			<b-form-input
 				class="searchbar-input"
 				:class="{ 'bg-light': !theme, 'bg-dark': theme }"
-				placeholder="Pesquisar Notícias e Atividades"
+				placeholder="Pesquisar"
 				type="search"
 				v-model="search"
 				style="width: 400px"

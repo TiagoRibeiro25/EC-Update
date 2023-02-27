@@ -61,10 +61,8 @@ const author = useUsersStore().getUserById(newItem.authorId);
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;
-$secondary-color: #e4f0e8;
-$tertiary-color: #ffffff;
-$fourth-color: #18516f;
-$fifth-color: #aedcc0;
+$secondary-color: #ffffff;
+$tertiary-color: #aedcc0;
 
 .new-title {
 	font-family: "Alkes", sans-serif;
@@ -81,7 +79,7 @@ $fifth-color: #aedcc0;
 }
 
 .title-dark-theme {
-	color: $fifth-color;
+	color: $tertiary-color;
 }
 
 .title-light-theme {
@@ -89,7 +87,7 @@ $fifth-color: #aedcc0;
 }
 
 .content-dark-theme {
-	color: $tertiary-color;
+	color: $secondary-color;
 }
 
 .content-light-theme {

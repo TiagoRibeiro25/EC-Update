@@ -1,5 +1,9 @@
 <script setup>
 import Option from "./Option.vue";
+import UsersMenu from "./Menus/UsersMenu.vue";
+import SchoolsMenu from "./Menus/SchoolsMenu.vue";
+import ActivitiesMenu from "./Menus/ActivitiesMenu.vue";
+import MeetingsMenu from "./Menus/MeetingsMenu.vue";
 import { ref } from "vue";
 
 const props = defineProps({ theme: { type: Boolean, required: true } });
@@ -31,25 +35,27 @@ const changeOption = (index) => {
 		<div
 			class="menu-container w-100 shadow"
 			:class="theme ? 'menu-container-dark-theme' : 'menu-container-light-theme'"
-		></div>
+		>
+			<UsersMenu v-if="options[0].active" />
+			<SchoolsMenu v-if="options[1].active" />
+			<ActivitiesMenu v-if="options[2].active" />
+			<MeetingsMenu v-if="options[3].active" />
+		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;
-$secondary-color: #e4f0e8;
-$tertiary-color: #ffffff;
-$fourth-color: #18516f;
-$fifth-color: #aedcc0;
+$secondary-color: #aedcc0;
 
 .menu-container {
 	height: 600px;
-	border-radius: 0.6rem;
+	border-radius: 1rem;
 	margin-top: -3px;
 }
 
 .menu-container-light-theme {
-	background-color: $fifth-color;
+	background-color: $secondary-color;
 }
 
 .menu-container-dark-theme {

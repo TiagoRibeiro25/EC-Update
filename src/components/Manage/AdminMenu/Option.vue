@@ -20,7 +20,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div class="ml-3">
+	<div class="ml-4">
 		<span
 			class="option"
 			:class="{
@@ -37,8 +37,7 @@ watchEffect(() => {
 
 <style lang="scss" scoped>
 $primary-color: #343e3d;
-$secondary-color: #18516f;
-$tertiary-color: #aedcc0;
+$secondary-color: #aedcc0;
 
 .option {
 	font-family: "Panton", sans-serif;
@@ -60,6 +59,6 @@ $tertiary-color: #aedcc0;
 }
 
 .option-dark-theme {
-	color: $tertiary-color;
+	color: $secondary-color;
 }
 </style>

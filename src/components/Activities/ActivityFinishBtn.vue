@@ -32,6 +32,15 @@ const finishActivity = () => {
 	useActivitiesStore().addReport(activityId, report);
 	useActivitiesStore().finishActivity(activityId);
 
+	// unlock "Preciso" badge
+	const activity = useActivitiesStore().getActivityById(activityId);
+	const today = new Date().toString().split(" ");
+	const finalDate = new Date(activity.finalDate).toString().split(" ");
+	const todayDate = `${today[2]}-${today[1]}-${today[3]}`;
+	const finalDateFormatted = `${finalDate[2]}-${finalDate[1]}-${finalDate[3]}`;
+
+	if (todayDate === finalDateFormatted) useActivitiesStore().unlockBadge("2");
+
 	setTimeout(() => {
 		window.location.reload();
 	}, 500);

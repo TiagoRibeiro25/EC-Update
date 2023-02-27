@@ -39,6 +39,12 @@ const createNewMeeting = () => {
 
 	setTimeout(() => {
 		useMeetingsStore().addNewMeeting(meeting);
+		useUsersStore().increaseMeetingsCreated();
+
+		// unlock "Novato das Reuniões" or "Veterano das Reuniões" badge
+		if (loggedUser.meetingsCreated === 1) useUsersStore().unlockBadge("3");
+		else if (loggedUser.meetingsCreated === 3) useUsersStore().unlockBadge("7");
+
 		// reset form
 		date.value = new Date();
 		time.value = new Date().getHours() + ":" + new Date().getMinutes();

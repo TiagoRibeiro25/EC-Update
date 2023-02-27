@@ -79,9 +79,11 @@ export const useUsersStore = defineStore("users", () => {
 	};
 
 	const unlockBadge = (badgeId) => {
+		badgeId = badgeId.toString();
 		const userBadges = users.value.find((user) => user.id === loggedUserId.value).badges;
 		if (userBadges.includes(badgeId)) return;
 		userBadges.push(badgeId);
+		users.value.find((user) => user.id === loggedUserId.value).badges = userBadges;
 		setLocalStorage("users", users.value);
 	};
 

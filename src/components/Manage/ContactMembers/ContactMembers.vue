@@ -25,6 +25,9 @@ const contactMembers = () => {
 		message: message.value,
 	};
 
+	// unlock "Mensageiro" badge
+	useUsersStore().unlockBadge("5");
+
 	console.table(data);
 };
 </script>

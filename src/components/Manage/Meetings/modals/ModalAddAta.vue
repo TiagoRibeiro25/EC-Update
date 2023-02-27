@@ -1,6 +1,7 @@
 <script setup>
 import CreateItemImgs from "@/components/CreateItemImgs.vue";
 import { useMeetingsStore } from "@/stores/meetings";
+import { useUsersStore } from "@/stores/users";
 import { ref } from "vue";
 
 const props = defineProps({
@@ -19,6 +20,9 @@ const verifyText = () => !text.value.match(/[a-z]/i);
 const addAta = () => {
 	adding.value = true;
 	const ata = { description: text.value, images: images.value };
+
+	// unlock "Supervisor das reuniões" badge
+	useUsersStore().unlockBadge("4");
 
 	setTimeout(() => {
 		useMeetingsStore().addAta(meeting.id, ata);

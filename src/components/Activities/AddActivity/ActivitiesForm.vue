@@ -73,6 +73,13 @@ const createActivity = () => {
 	};
 
 	useActivitiesStore().addActivity(activity);
+	useUsersStore().increaseActivitiesCreated();
+
+	console.log(userLogged.activitiesCreated);
+
+	// unlock "novato das atividades" or "Veterano das atividades" badge
+	if (userLogged.activitiesCreated === 1) useUsersStore().unlockBadge("0");
+	else if (userLogged.activitiesCreated === 10) useUsersStore().unlockBadge("1");
 
 	setTimeout(() => {
 		router.push({ name: "Activities" });

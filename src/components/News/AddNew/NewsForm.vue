@@ -24,6 +24,10 @@ const createNew = () => {
 	};
 
 	useNewsStore().addNew(newItem);
+
+	// unlock badge "Jornalista amador"
+	useUsersStore().unlockBadge("6");
+
 	setTimeout(() => {
 		router.push({ name: "News" });
 	}, 500);

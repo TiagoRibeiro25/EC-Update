@@ -82,10 +82,8 @@ $primary-color: #343e3d;
 $secondary-color: #aedcc0;
 $tertiary-color: #e4f0e8;
 $fourth-color: #ffffff;
-$fifth-color: #18516f;
-$sixth-color: #000;
-$seventh-color: #57b894;
-$eighth-color: #3e4847;
+$fifth-color: #57b894;
+$sixth-color: #3e4847;
 
 .error-msg {
 	color: $secondary-color;
@@ -97,7 +95,7 @@ $eighth-color: #3e4847;
 }
 
 .table {
-	background-color: $eighth-color;
+	background-color: $sixth-color;
 	color: $secondary-color;
 	cursor: default;
 
@@ -106,10 +104,10 @@ $eighth-color: #3e4847;
 			font-family: "Panton", sans-serif;
 			font-weight: 700;
 			font-size: 22px;
-			background-color: $eighth-color;
+			background-color: $sixth-color;
 
 			& th {
-				border: 2px solid $sixth-color;
+				border: 2px solid $primary-color;
 			}
 		}
 	}
@@ -127,7 +125,7 @@ $eighth-color: #3e4847;
 			}
 
 			& td {
-				border: 2px solid $sixth-color;
+				border: 2px solid $primary-color;
 
 				& .select-user-role-input {
 					background-color: $primary-color;
@@ -143,7 +141,7 @@ $eighth-color: #3e4847;
 					&:focus {
 						background-color: $primary-color;
 						color: $secondary-color;
-						border: 2px solid $seventh-color;
+						border: 2px solid $fifth-color;
 						outline: none;
 						box-shadow: none;
 					}
@@ -157,7 +155,7 @@ $eighth-color: #3e4847;
 	overflow-y: scroll;
 	height: 460px;
 	border-radius: 25px;
-	background-color: $eighth-color;
+	background-color: $sixth-color;
 
 	&::-webkit-scrollbar {
 		width: 15px;
@@ -168,7 +166,7 @@ $eighth-color: #3e4847;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: $seventh-color;
+		background: $fifth-color;
 	}
 
 	&::-webkit-scrollbar-thumb:hover {
@@ -181,7 +179,7 @@ $eighth-color: #3e4847;
 }
 
 caption {
-	color: $seventh-color;
+	color: $fifth-color;
 	font-family: "Panton", sans-serif;
 	font-weight: 700;
 	font-size: 17px;

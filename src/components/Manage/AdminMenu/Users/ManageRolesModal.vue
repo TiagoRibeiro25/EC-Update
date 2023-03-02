@@ -48,8 +48,9 @@ const addNewRole = () => {
 					block
 					type="submit"
 					:disabled="newRole === ''"
-					>Adicionar</b-button
 				>
+					Adicionar
+				</b-button>
 			</form>
 		</div>
 	</b-modal>

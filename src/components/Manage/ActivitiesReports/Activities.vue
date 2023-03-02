@@ -62,7 +62,7 @@ $fifth-color: #aedcc0;
 
 .activities {
 	max-height: 600px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .report-container {

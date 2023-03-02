@@ -38,6 +38,7 @@ $fourth-color: #aedcc0;
 	outline: transparent;
 	border: 2px solid $fourth-color;
 	border-radius: 0.6rem;
+	overflow-y: auto !important;
 }
 
 .message-dark-mode {

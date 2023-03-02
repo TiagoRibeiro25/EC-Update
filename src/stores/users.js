@@ -51,6 +51,19 @@ export const useUsersStore = defineStore("users", () => {
 
 	const doesUserExist = (userId) => users.value.some((user) => user.id === userId);
 
+	const getFilteredUsers = (filterName, filterEmail, filterRole) => {
+		return users.value.filter((user) => {
+			const isMatchingName = user.name.toLowerCase().includes(filterName.toLowerCase());
+			const isMatchingEmail = user.email
+				.toLowerCase()
+				.includes(filterEmail.toLowerCase());
+			const isMatchingRole =
+				user.role.toLowerCase() === filterRole.toLowerCase() || filterRole === "all";
+
+			return isMatchingName && isMatchingEmail && isMatchingRole;
+		});
+	};
+
 	// Roles
 	const getRoles = () => roles.value;
 
@@ -170,6 +183,7 @@ export const useUsersStore = defineStore("users", () => {
 		doesEmailExist,
 		doesUserExist,
 		getUsersBySchool,
+		getFilteredUsers,
 		getRoles,
 		isUserLogged,
 		getUserLogged,

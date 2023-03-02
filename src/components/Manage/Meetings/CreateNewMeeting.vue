@@ -96,6 +96,7 @@ const createNewMeeting = () => {
 				<b-form-textarea
 					class="form-input form-input-select mt-1"
 					:class="theme ? 'form-input-dark-theme' : 'form-input-light-theme'"
+					style="overflow-y: auto"
 					v-model="text"
 					placeholder="Descrição da reunião"
 					max-rows="5"

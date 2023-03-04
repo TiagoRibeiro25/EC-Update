@@ -22,6 +22,7 @@ function getThemeName(themeId) {
 		<header>
 			<img
 				class="img-fluid"
+				loading="lazy"
 				:src="activity.images[0]"
 				:alt="activity.title"
 				:style="{ 'border-radius': '20px 20px 0 0' }"

@@ -12,10 +12,16 @@ const isNewItemHovered = ref(false);
 		@mouseover="isNewItemHovered = true"
 		@mouseleave="isNewItemHovered = false"
 	>
-		<img class="img-fluid news-image w-100 h-100" :src="image" alt="Imagem da Notícia" />
+		<img
+			class="img-fluid news-image w-100 h-100"
+			:src="image"
+			loading="lazy"
+			alt="Imagem da Notícia"
+		/>
 		<img
 			class="img-fluid overlay-image w-100 h-100 position-absolute"
 			src="@/assets/icons/seeMore.svg"
+			loading="lazy"
 			alt="Imagem da Notícia"
 			:style="{ opacity: isNewItemHovered ? 1 : 0 }"
 		/>

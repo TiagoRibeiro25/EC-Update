@@ -41,6 +41,7 @@ const activity = props.activity;
 			<div class="col-4 plant px-0">
 				<img
 					class="img-fluid plant-img h-100 w-100"
+					loading="lazy"
 					src="@/assets/images/activityDetail-illustration.png"
 					alt=""
 				/>

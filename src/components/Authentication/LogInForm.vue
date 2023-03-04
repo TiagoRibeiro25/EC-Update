@@ -1,11 +1,13 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useUsersStore } from "@/stores/users";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
 });
 const theme = props.theme;
+const router = useRouter();
 
 const email = ref("");
 const password = ref("");
@@ -27,7 +29,7 @@ const logIn = () => {
 	passwordValidation.value = true;
 
 	setTimeout(() => {
-		window.location.reload();
+		router.go();
 	}, 1500);
 };
 

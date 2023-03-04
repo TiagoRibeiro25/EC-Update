@@ -2,12 +2,15 @@
 import CreateItemImgs from "@/components/CreateItemImgs.vue";
 import { useActivitiesStore } from "@/stores/activities";
 import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
 	activityId: { type: String, required: true },
 });
 
+const router = useRouter();
+const route = useRoute();
 const theme = props.theme;
 const activityId = props.activityId;
 const modalId = `modal-${crypto.randomUUID()}`;
@@ -42,7 +45,8 @@ const finishActivity = () => {
 	if (todayDate === finalDateFormatted) useActivitiesStore().unlockBadge("2");
 
 	setTimeout(() => {
-		window.location.reload();
+		if (route.name !== "Activities") router.push({ name: "Activities" });
+		else router.go(0);
 	}, 500);
 };
 </script>

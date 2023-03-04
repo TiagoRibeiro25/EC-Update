@@ -1,10 +1,11 @@
 <script setup>
 import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useUsersStore } from "@/stores/users";
-const userStore = useUsersStore();
 
+const userStore = useUsersStore();
 const route = ref(useRoute().name);
+const router = useRouter();
 
 watch(useRoute(), (newRoute) => {
 	route.value = newRoute.name;
@@ -49,7 +50,7 @@ function close() {
 
 function signOut() {
 	userStore.signOut();
-	window.location.reload();
+	router.go();
 }
 </script>
 

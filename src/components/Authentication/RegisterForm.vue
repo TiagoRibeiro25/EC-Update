@@ -3,11 +3,13 @@ import { ref, computed } from "vue";
 import { useUsersStore } from "@/stores/users";
 import { useSchoolsStore } from "@/stores/schools";
 import { validateEmail } from "@/hooks/validateEmail";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
 	theme: { type: Boolean, required: true },
 });
 const theme = props.theme;
+const router = useRouter();
 
 const schools = ref(useSchoolsStore().getSchools());
 schools.value = schools.value.map((school) => {
@@ -140,7 +142,7 @@ const createNewAccount = () => {
 	useUsersStore().logIn(email.value, password.value);
 	resetForm();
 	setTimeout(() => {
-		window.location.reload();
+		router.go();
 	}, 500);
 };
 

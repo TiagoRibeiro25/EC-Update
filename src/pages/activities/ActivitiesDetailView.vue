@@ -13,7 +13,7 @@ const loaded = ref(false);
 
 onBeforeMount(() => {
 	setTimeout(() => {
-		if (activity) loaded.value = true;
+		if (activity && !activity.report.description) loaded.value = true;
 		else router.push({ name: "NotFound" });
 	}, 300);
 });

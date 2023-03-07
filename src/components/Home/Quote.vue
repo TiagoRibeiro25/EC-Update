@@ -5,7 +5,11 @@ import { onBeforeMount, ref } from "vue";
 const props = defineProps({ theme: { type: Boolean, required: true } });
 const theme = props.theme;
 
-const quote = ref({});
+const quote = ref({
+	author: "Yan Arthus Bertrand",
+	content:
+		"A ecologia deve estar inscrita no ADN de tudo o que fazemos diariamente e ainda não entrou nos costumes",
+});
 
 // Fetch a random quote from the API
 onBeforeMount(async () => {
@@ -13,10 +17,6 @@ onBeforeMount(async () => {
 		const res = await axios.get("https://quotes-api-fkca.onrender.com/api/quotes/random");
 		quote.value = res.data;
 	} catch (error) {
-		quote.value = {
-			author: "Yan Arthus Bertrand",
-			quote: "A ecologia deve estar inscrita no ADN de tudo o que fazemos diariamente e ainda não entrou nos costumes",
-		};
 		console.log(
 			`There was an error fetching the quote. Using default quote instead.\n Error: ${error}`
 		);
@@ -28,11 +28,8 @@ onBeforeMount(async () => {
 	<div
 		class="d-flex flex-column align-items-center justify-content-center mb-5 w-75 mx-auto"
 	>
-		<div v-if="!quote.quote || !quote.author">
-			<b-spinner variant="success" label="Carregando..."></b-spinner>
-		</div>
-		<div v-else class="text-center" :class="!theme ? 'light-text' : 'dark-text'">
-			<p class="content mb-0">"{{ quote.quote }}"</p>
+		<div class="text-center" :class="!theme ? 'light-text' : 'dark-text'">
+			<p class="content mb-0">"{{ quote.content }}"</p>
 			<span class="author mt-0">{{ quote.author }}</span>
 		</div>
 	</div>

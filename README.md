@@ -51,7 +51,10 @@ TODO:
 
 This is a list of things that need to be done before the project is finished:
 
-- [ ] Admin Menu - Must have (in progress)
+- [x] Admin Menu - Must have (in progress)
 - [ ] Dashboard - Should have
 - [ ] Adapt to mobile - Nice to have (partially done)
 - [ ] Update to consume API - Must have
+- [ ] Unit tests - Should have
+- [ ] Improve Performance - Nice to have
+- [ ] Add error handling - Should have

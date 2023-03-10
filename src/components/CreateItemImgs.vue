@@ -31,6 +31,7 @@ const removeImg = (index) => images.value.splice(index, 1);
 			:key="index"
 			:src="image"
 			alt="Imagem adicionada"
+			loading="lazy"
 			class="addNewImg img-fluid my-3 mx-3 rounded-lg shadow-sm"
 			@click="removeImg(index)"
 		/>
@@ -39,6 +40,7 @@ const removeImg = (index) => images.value.splice(index, 1);
 			v-if="images.length < 4"
 			class="addNewImg addImgBtn my-3 mx-3 rounded-lg shadow"
 			src="@/assets/images/addImage.png"
+			loading="lazy"
 			alt="Adicionar imagem"
 			@click="addNewImg"
 		/>

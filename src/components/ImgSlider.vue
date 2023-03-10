@@ -23,7 +23,8 @@ const interval = setInterval(() => {
 			v-for="(image, index) in delayedImages"
 			:key="index"
 			:src="image.includes('./data/images') ? '../' + image : image"
-			alt="Imagem da notícia"
+			alt="Imagem do artigo"
+			loading="lazy"
 			class="newDetailsImg img-fluid my-3 mx-3 rounded-lg shadow"
 		/>
 	</div>
